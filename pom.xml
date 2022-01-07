@@ -7,7 +7,6 @@
     <modules>
         <module>keanntech-framework-dependencies</module>
         <module>keanntech-framework-common</module>
-        <module>keanntech-framework-common</module>
     </modules>
 
     <parent>

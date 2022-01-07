@@ -7,6 +7,8 @@
     <modules>
         <module>keanntech-framework-dependencies</module>
         <module>keanntech-framework-common</module>
+        <module>keanntech-framework-gateway</module>
+        <module>keanntech-framework-admin</module>
     </modules>
 
     <parent>
@@ -39,6 +41,10 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -61,6 +67,8 @@
                 <groupId>com.keanntech.framework</groupId>
                 <artifactId>keanntech-framework-dependencies</artifactId>
                 <version>${keanntech.framework.dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

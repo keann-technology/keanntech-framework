@@ -1,3 +1,25 @@
 spring:
   profiles:
     active: dev
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+jwt:
+  header: Authorization
+  secret: ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()zyxwvutsrqponmlkjihgfedcba1234567890
+  #token有效期一天
+  expiration: 86400
+  tokenHead: "Bearer "
+
+mybatis:
+  mapper-locations: classpath*:mybatis/*Mapper.xml
+  config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.keanntech.framework.**.domain
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/*Mapper.xml

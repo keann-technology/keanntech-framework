@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.keanntech.framework.admin.mapper.AdminRoleMapper">
+  <resultMap id="BaseResultMap" type="com.keanntech.framework.admin.domain.AdminRole">
+    <!--@mbg.generated-->
+    <!--@Table t_admin_role-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="admin_count" jdbcType="INTEGER" property="adminCount" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="del_flag" jdbcType="BOOLEAN" property="delFlag" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, role_name, role_code, description, admin_count, `status`, sort, del_flag, created_by, 
+    created_time, updated_by, updated_time
+  </sql>
+
+  <select id="findRoleByUserId" resultMap="BaseResultMap">
+    SELECT
+    ar.id, ar.role_name, ar.role_code, ar.description, ar.admin_count, ar.`status`, ar.sort, ar.del_flag, ar.created_by,
+    ar.created_time, ar.updated_by, ar.updated_time
+    FROM t_admin_role_relation rr
+    LEFT JOIN t_admin_role ar ON ar.id = rr.role_id
+    WHERE rr.admin_id = #{userId,jdbcType=BIGINT}
+  </select>
+</mapper>

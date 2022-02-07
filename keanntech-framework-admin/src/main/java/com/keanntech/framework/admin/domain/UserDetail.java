@@ -12,31 +12,31 @@ import java.util.*;
  */
 public class UserDetail implements UserDetails {
     private long id;
-    private String username;
-    private String password;
+    private String userName;
+    private String passWord;
     private List<AdminRole> roleList;
 
     public UserDetail(
             long id,
-            String username,
+            String userName,
             List<AdminRole> roleList,
-            String password) {
+            String passWord) {
         this.id = id;
-        this.username = username;
-        this.password = password;
+        this.userName = userName;
+        this.passWord = passWord;
         this.roleList = roleList;
     }
 
-    public UserDetail(String username, String password, List<AdminRole> roleList) {
-        this.username = username;
-        this.password = password;
+    public UserDetail(String userName, String passWord, List<AdminRole> roleList) {
+        this.userName = userName;
+        this.passWord = passWord;
         this.roleList = roleList;
     }
 
-    public UserDetail(long id, String username, String password) {
+    public UserDetail(long id, String userName, String passWord) {
         this.id = id;
-        this.username = username;
-        this.password = password;
+        this.userName = userName;
+        this.passWord = passWord;
     }
 
     //返回分配给用户的角色列表
@@ -57,12 +57,12 @@ public class UserDetail implements UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return passWord;
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return userName;
     }
 
     /**
@@ -96,11 +96,11 @@ public class UserDetail implements UserDetails {
     }
 
 
-    public List<AdminRole> getRole() {
+    public List<AdminRole> getRoleList() {
         return roleList;
     }
 
-    public void setRole(List<AdminRole> roleList) {
+    public void setRoleList(List<AdminRole> roleList) {
         this.roleList = roleList;
     }
 
@@ -108,12 +108,12 @@ public class UserDetail implements UserDetails {
         this.id = id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String passWord) {
+        this.passWord = passWord;
     }
 
 }

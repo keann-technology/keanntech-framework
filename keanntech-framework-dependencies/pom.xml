@@ -31,7 +31,7 @@
         <druid.version>1.2.8</druid.version>
         <common.lang3.version>3.10</common.lang3.version>
         <mybatis.plus.version>3.5.1</mybatis.plus.version>
-        <swagger2.version>3.0.0</swagger2.version>
+        <swagger3.version>3.0.0</swagger3.version>
         <spring.security.jwt.version>1.0.9.RELEASE</spring.security.jwt.version>
         <kf.security.version>1.0-SNAPSHOT</kf.security.version>
         <kf.common.version>1.0-SNAPSHOT</kf.common.version>
@@ -39,6 +39,8 @@
         <jaxb.version>2.3.0.1</jaxb.version>
         <jaxb.api.version>2.3.1</jaxb.api.version>
         <activation.version>1.1.1</activation.version>
+        <config.processor.version>2.3.7.RELEASE</config.processor.version>
+        <swagger.bootstrap.ui.version>1.9.3</swagger.bootstrap.ui.version>
     </properties>
 
     <dependencies>
@@ -66,6 +68,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-security</artifactId>
                 <version>${security.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>${config.processor.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.security</groupId>
@@ -130,13 +137,13 @@
             </dependency>
             <dependency>
                 <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${swagger2.version}</version>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${swagger3.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${swagger2.version}</version>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger.bootstrap.ui.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.xbib.elasticsearch</groupId>
@@ -167,6 +174,11 @@
                 <groupId>javax.activation</groupId>
                 <artifactId>activation</artifactId>
                 <version>${activation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

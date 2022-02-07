@@ -22,13 +22,15 @@ public class SwaggerConfig {
     private Contact contact = new Contact("Keanntech","localhost:8080/swagger-ui.html", "keanntech@aliyun.com");
 
     @Bean
-    public Docket createRestApi() {
+    public Docket adminRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.keanntech.framework.admin"))
+                //正则匹配请求路径，并分配至当前分组
+                .paths(PathSelectors.ant("/api/admin/**"))
                 .build()
-                .apiInfo(apiInfo());
+                .groupName("后台接口分组");
     }
 
     private ApiInfo apiInfo() {

@@ -23,3 +23,23 @@ mybatis:
   type-aliases-package: com.keanntech.framework.**.domain
 mybatis-plus:
   mapper-locations: classpath*:mybatis/*Mapper.xml
+
+keanntech:
+  apiPathWhiteConfig:
+    - /favicon.ico
+    - /**/*.css
+    - /**/*.js
+    - /**/*.png
+    - /**/*.gif
+    - /**/*.ttf
+    - /v3/**
+    - /v2/api-docs
+    - /swagger-ui/**
+    - /swagger-resources/**
+    - /swagger-resources/configuration/ui
+    - /swagger-resources
+    - /swagger-resources/configuration/security
+    - /swagger-ui.html
+    - /doc.html
+    - /webjars/**
+    - /api/admin/v1/login

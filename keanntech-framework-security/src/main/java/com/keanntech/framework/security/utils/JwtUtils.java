@@ -1,7 +1,7 @@
-package com.keanntech.framework.admin.utils;
+package com.keanntech.framework.security.utils;
 
-import com.keanntech.framework.admin.domain.AdminRole;
-import com.keanntech.framework.admin.domain.UserDetail;
+import com.keanntech.framework.security.domain.Roles;
+import com.keanntech.framework.security.domain.UserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.Jwts;
@@ -9,7 +9,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.noggit.JSONUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -40,17 +39,17 @@ public class JwtUtils {
 
     private final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
 
-    public UserDetail getUserFromToken(String token) {
-        UserDetail userDetail;
+    public UserDetails getUserFromToken(String token) {
+        UserDetails userDetail;
         try {
             final Claims claims = getClaimsFromToken(token);
             long userId = getUserIdFromToken(token);
             String username = claims.getSubject();
             String roleName = claims.get(CLAIM_KEY_AUTHORITIES).toString();
-            AdminRole role = AdminRole.builder().roleName(roleName).build();
-            List<AdminRole> roleList = new ArrayList<>();
+            Roles role = Roles.builder().roleName(roleName).build();
+            List<Roles> roleList = new ArrayList<>();
             roleList.add(role);
-            userDetail = new UserDetail(userId, username, roleList, "");
+            userDetail = new UserDetails(userId, username, roleList, "");
         } catch (Exception e) {
             userDetail = null;
         }
@@ -90,7 +89,7 @@ public class JwtUtils {
         return created;
     }
 
-    public String generateAccessToken(UserDetail userDetail) {
+    public String generateAccessToken(UserDetails userDetail) {
         Map<String, Object> claims = generateClaims(userDetail);
         claims.put(CLAIM_KEY_AUTHORITIES, authoritiesToArray(userDetail.getAuthorities()).get(0));
         return generateAccessToken(userDetail.getUsername(), claims);
@@ -126,7 +125,7 @@ public class JwtUtils {
 
 
     public Boolean validateToken(String token, UserDetails userDetails) {
-        UserDetail userDetail = (UserDetail) userDetails;
+        UserDetails userDetail = (UserDetails) userDetails;
         final long userId = getUserIdFromToken(token);
         final String username = getUsernameFromToken(token);
 //        final Date created = getCreatedDateFromToken(token);
@@ -137,7 +136,7 @@ public class JwtUtils {
         );
     }
 
-    public String generateRefreshToken(UserDetail userDetail) {
+    public String generateRefreshToken(UserDetails userDetail) {
         Map<String, Object> claims = generateClaims(userDetail);
         // 只授于更新 token 的权限
         String roles[] = new String[]{JwtUtils.ROLE_REFRESH_TOKEN};
@@ -185,7 +184,7 @@ public class JwtUtils {
         return (lastPasswordReset != null && created.before(lastPasswordReset));
     }
 
-    private Map<String, Object> generateClaims(UserDetail userDetail) {
+    private Map<String, Object> generateClaims(UserDetails userDetail) {
         Map<String, Object> claims = new HashMap<>(16);
         claims.put(CLAIM_KEY_USER_ID, userDetail.getId());
         return claims;

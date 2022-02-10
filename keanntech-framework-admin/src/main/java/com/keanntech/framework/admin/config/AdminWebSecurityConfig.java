@@ -1,6 +1,6 @@
 package com.keanntech.framework.admin.config;
 
-import com.keanntech.framework.admin.jwt.JwtAuthenticationTokenFilter;
+import com.keanntech.framework.security.jwt.JwtAuthenticationTokenFilter;
 import com.keanntech.framework.security.config.ApiPathWhiteConfig;
 import com.keanntech.framework.security.config.WebSecurityConfig;
 import org.springframework.beans.factory.annotation.Qualifier;

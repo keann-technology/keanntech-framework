@@ -4,28 +4,29 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.keanntech.framework.security.domain.Roles;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
-    @Author
-    @Create 2022-01-26 09:39:24
-    @Desc ...
+ * 后台角色
+ * @Author
+ * @Create 2022-01-26 09:39:24
+ * @Desc ...
 */
 
-/**
- * 后台角色
- */
 @ApiModel(value = "后台角色 ")
 @Data
-@Builder
 @TableName(value = "t_admin_role")
-public class AdminRole implements Serializable {
+public class AdminRole extends Roles implements Serializable {
+
+    public AdminRole(Long id, String roleName, String roleCode){
+        super(id, roleName, roleCode);
+    }
     /**
      * ID
      */

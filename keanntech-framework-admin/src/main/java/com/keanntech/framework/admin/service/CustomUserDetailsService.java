@@ -5,13 +5,16 @@ import com.keanntech.framework.admin.domain.AdminRole;
 import com.keanntech.framework.admin.domain.UserDetail;
 import com.keanntech.framework.admin.mapper.AdminMapper;
 import com.keanntech.framework.admin.mapper.AdminRoleMapper;
+import com.keanntech.framework.security.domain.Roles;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author miaoqingfu
@@ -33,7 +36,14 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (admin == null) {
             throw new UsernameNotFoundException(String.format("No user found with username '%s'.", name));
         }
-        List<AdminRole> roleList = adminRoleMapper.findRoleByUserId(admin.getId());
+        List<Roles> roleList = new ArrayList<>();
+        List<AdminRole> adminRoleList = adminRoleMapper.findRoleByUserId(admin.getId());
+        if (Objects.nonNull(adminRoleList)) {
+            adminRoleList.forEach(adminRole -> {
+                Roles roles = new Roles(adminRole.getId(), adminRole.getRoleName(), adminRole.getRoleCode());
+                roleList.add(roles);
+            });
+        }
         UserDetail userDetail = new UserDetail(admin.getId(), name, roleList, admin.getPassWord());
         return userDetail;
     }

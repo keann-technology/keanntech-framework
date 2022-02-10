@@ -21,12 +21,11 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
         //验证为未登陆状态会进入此方法，认证错误
-        System.out.println("认证失败：" + authException.getMessage());
         response.setStatus(401);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
         PrintWriter printWriter = response.getWriter();
-        String body = ResultJson.failure(ResultCode.UNAUTHORIZED, authException.getMessage()).toString();
+        String body = ResultJson.failure(ResultCode.LOGIN_ERROR, authException.getMessage()).toString();
         printWriter.write(body);
         printWriter.flush();
     }

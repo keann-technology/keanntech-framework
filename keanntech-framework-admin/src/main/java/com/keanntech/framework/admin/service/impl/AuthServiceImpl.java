@@ -5,7 +5,7 @@ import com.keanntech.framework.admin.domain.UserDetail;
 import com.keanntech.framework.admin.exception.CustomException;
 import com.keanntech.framework.admin.mapper.AdminMapper;
 import com.keanntech.framework.admin.service.AuthService;
-import com.keanntech.framework.admin.utils.JwtUtils;
+import com.keanntech.framework.security.utils.JwtUtils;
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;
 import org.springframework.security.authentication.AuthenticationManager;

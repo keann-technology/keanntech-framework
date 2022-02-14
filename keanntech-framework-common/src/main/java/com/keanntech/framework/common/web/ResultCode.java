@@ -21,6 +21,8 @@ public enum ResultCode {
     TIME_OUT(408, "请求超时"),
 
     SERVER_ERROR(500, "服务器内部错误"),
+
+    REGISTER_ADMIN_ERROR(90000, "注册管理员失败")
     ;
     private int code;
     private String msg;

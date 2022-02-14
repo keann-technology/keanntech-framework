@@ -11,6 +11,7 @@ CREATE TABLE t_admin
     expired       tinyint(1)   DEFAULT 0 COMMENT '过期 1-过期0-未过期',
     locked        tinyint(1)   DEFAULT 0 COMMENT '锁定 1-锁定0-未锁定',
     remark        VARCHAR(256) DEFAULT '' COMMENT '备注',
+    super_admin   tinyint(1)   DEFAULT 0 COMMENT '是否超级管理员 1-是0-否',
     del_flag      tinyint(1)   DEFAULT 0 COMMENT '删除 1-删除0未删除',
     created_by    VARCHAR(32)  DEFAULT '' COMMENT '创建人',
     created_time  DATETIME COMMENT '创建时间',

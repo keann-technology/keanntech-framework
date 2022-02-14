@@ -45,8 +45,8 @@ public class JwtUtils {
             final Claims claims = getClaimsFromToken(token);
             long userId = getUserIdFromToken(token);
             String username = claims.getSubject();
-            String roleName = claims.get(CLAIM_KEY_AUTHORITIES).toString();
-            Roles role = Roles.builder().roleName(roleName).build();
+            String roleCode = claims.get(CLAIM_KEY_AUTHORITIES).toString();
+            Roles role = Roles.builder().roleCode(roleCode).build();
             List<Roles> roleList = new ArrayList<>();
             roleList.add(role);
             userDetail = new UserDetails(userId, username, roleList, "");
@@ -91,7 +91,7 @@ public class JwtUtils {
 
     public String generateAccessToken(UserDetails userDetail) {
         Map<String, Object> claims = generateClaims(userDetail);
-        claims.put(CLAIM_KEY_AUTHORITIES, authoritiesToArray(userDetail.getAuthorities()).get(0));
+        claims.put(CLAIM_KEY_AUTHORITIES, authoritiesToArray(userDetail.getAuthorities()));
         return generateAccessToken(userDetail.getUsername(), claims);
     }
 

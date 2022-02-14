@@ -14,6 +14,7 @@
     <result column="enabled" jdbcType="BOOLEAN" property="enabled" />
     <result column="expired" jdbcType="BOOLEAN" property="expired" />
     <result column="locked" jdbcType="BOOLEAN" property="locked" />
+    <result column="super_admin" jdbcType="BOOLEAN" property="superAdmin" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="del_flag" jdbcType="BOOLEAN" property="delFlag" />
     <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
@@ -24,10 +25,10 @@
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     id, user_name, pass_word, head_portrait, email, mobile, nick_name, enabled, expired, 
-    locked, remark, del_flag, created_by, created_time, updated_by, updated_time
+    locked, super_admin, remark, del_flag, created_by, created_time, updated_by, updated_time
   </sql>
 
   <select id="findByUserName" resultMap="BaseResultMap">
-    SELECT <include refid="Base_Column_List"/> FROM t_admin WHERE user_name = #{userName,jdbcType=VARCHAR} AND del_flag = '0'
+    SELECT <include refid="Base_Column_List" /> FROM t_admin WHERE user_name = #{userName,jdbcType=VARCHAR} AND del_flag = '0'
   </select>
 </mapper>

@@ -34,7 +34,7 @@ public class UserDetails implements org.springframework.security.core.userdetail
         List<GrantedAuthority> authorities = new ArrayList<>();
         if (Objects.nonNull(roleList) && roleList.size() > 0) {
             roleList.forEach(role -> {
-                authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+                authorities.add(new SimpleGrantedAuthority(role.getRoleCode()));
             });
         }
         return authorities;

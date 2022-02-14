@@ -88,6 +88,13 @@
               "defaultValue": "''"
             },
             {
+              "name": "super_admin",
+              "type": "tinyint(1)",
+              "remark": "1-是0-否",
+              "chnname": "是否超级管理员",
+              "defaultValue": "0"
+            },
+            {
               "name": "del_flag",
               "type": "tinyint(1)",
               "remark": "1-删除0未删除",

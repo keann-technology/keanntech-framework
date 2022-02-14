@@ -3,18 +3,16 @@ package com.keanntech.framework.admin.service.impl;
 import com.keanntech.framework.admin.domain.ResponseUserToken;
 import com.keanntech.framework.admin.domain.UserDetail;
 import com.keanntech.framework.admin.exception.CustomException;
-import com.keanntech.framework.admin.mapper.AdminMapper;
 import com.keanntech.framework.admin.service.AuthService;
-import com.keanntech.framework.security.utils.JwtUtils;
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;
+import com.keanntech.framework.security.utils.JwtUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,15 +23,11 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
 
     private final AuthenticationManager authenticationManager;
-    private final UserDetailsService userDetailsService;
     private final JwtUtils jwtTokenUtil;
-    private final AdminMapper adminMapper;
 
-    public AuthServiceImpl(AuthenticationManager authenticationManager, UserDetailsService userDetailsService, JwtUtils jwtTokenUtil, AdminMapper adminMapper) {
+    public AuthServiceImpl(AuthenticationManager authenticationManager, JwtUtils jwtTokenUtil) {
         this.authenticationManager = authenticationManager;
-        this.userDetailsService = userDetailsService;
         this.jwtTokenUtil = jwtTokenUtil;
-        this.adminMapper = adminMapper;
     }
 
     @Override

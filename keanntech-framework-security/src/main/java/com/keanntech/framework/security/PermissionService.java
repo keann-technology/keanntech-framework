@@ -4,13 +4,12 @@ import com.keanntech.framework.common.utils.ServletUtils;
 import com.keanntech.framework.security.utils.JwtUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author miaoqingfu
@@ -36,12 +35,8 @@ public class PermissionService {
         if (StringUtils.isBlank(token) || StringUtils.isEmpty(token)) {
             return false;
         }
-        List<String> roles = new ArrayList<>();
-        UserDetails userDetails = jwtUtils.getUserFromToken(token);
-        for(GrantedAuthority ga : userDetails.getAuthorities()) {
-            String[] roleAry = ga.getAuthority().substring(1, ga.getAuthority().lastIndexOf("]")).split(",");
-            Collections.addAll(roles, roleAry);
-        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 
         return roles.contains(role);
     }

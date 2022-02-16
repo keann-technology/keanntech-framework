@@ -45,10 +45,15 @@ public class JwtUtils {
             final Claims claims = getClaimsFromToken(token);
             long userId = getUserIdFromToken(token);
             String username = claims.getSubject();
-            String roleCode = claims.get(CLAIM_KEY_AUTHORITIES).toString();
-            Roles role = Roles.builder().roleCode(roleCode).build();
+            List<String> roleCodeList = (List) claims.get(CLAIM_KEY_AUTHORITIES);
             List<Roles> roleList = new ArrayList<>();
-            roleList.add(role);
+            if (Objects.nonNull(roleCodeList)) {
+                roleCodeList.forEach(role -> {
+                    Roles roles = new Roles();
+                    roles.setRoleCode(role);
+                    roleList.add(roles);
+                });
+            }
             userDetail = new UserDetails(userId, username, roleList, "");
         } catch (Exception e) {
             userDetail = null;

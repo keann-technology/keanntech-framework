@@ -49,6 +49,7 @@ public class AdminUserController {
     @GetMapping("/detail")
     @ApiOperation("管理详情信息")
     @ApiVersion()
+    @PreAuthorize("@perms.hasRole('super_admin')")
     public ResultJson<Admin> adminDetail(@RequestParam("adminId") Long adminId) {
         try {
             return ResultJson.ok(adminService.adminDetail(adminId));

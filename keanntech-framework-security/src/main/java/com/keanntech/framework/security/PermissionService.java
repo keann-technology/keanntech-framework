@@ -1,15 +1,14 @@
 package com.keanntech.framework.security;
 
 import com.keanntech.framework.common.utils.ServletUtils;
+import com.keanntech.framework.security.domain.UserDetails;
 import com.keanntech.framework.security.utils.JwtUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author miaoqingfu
@@ -35,8 +34,8 @@ public class PermissionService {
         if (StringUtils.isBlank(token) || StringUtils.isEmpty(token)) {
             return false;
         }
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+        UserDetails userDetails = jwtUtils.getUserFromToken(token);
+        Set<String> roles = userDetails.getAuthorities().stream().map(e -> e.getAuthority()).collect(Collectors.toSet());
 
         return roles.contains(role);
     }

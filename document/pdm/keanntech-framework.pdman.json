@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "user",
-      "chnname": "用户",
+      "chnname": "用户、租户",
       "entities": [
         {
           "title": "t_admin",
@@ -60,13 +60,6 @@
               "defaultValue": "''"
             },
             {
-              "name": "enabled",
-              "type": "tinyint(1)",
-              "remark": "1-启用0未启用",
-              "chnname": "状态",
-              "defaultValue": "1"
-            },
-            {
               "name": "expired",
               "type": "tinyint(1)",
               "remark": "1-过期0-未过期",
@@ -79,6 +72,13 @@
               "remark": "1-锁定0-未锁定",
               "chnname": "锁定",
               "defaultValue": "0"
+            },
+            {
+              "name": "enabled",
+              "type": "tinyint(1)",
+              "remark": "1-启用0未启用",
+              "chnname": "状态",
+              "defaultValue": "1"
             },
             {
               "name": "remark",
@@ -431,6 +431,434 @@
             }
           ],
           "chnname": "后台用户角色关系"
+        },
+        {
+          "title": "t_keann_tenant",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "tenant_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "租户名称",
+              "notNull": true
+            },
+            {
+              "name": "tenant_code",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "租户CODE",
+              "notNull": true,
+              "defaultValue": "''"
+            },
+            {
+              "name": "contacts",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "联系人",
+              "notNull": false,
+              "defaultValue": "''"
+            },
+            {
+              "name": "contacts_tel",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "联系人电话",
+              "defaultValue": "''"
+            },
+            {
+              "name": "address",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "地址",
+              "defaultValue": "''"
+            },
+            {
+              "name": "domain",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "绑定域名",
+              "defaultValue": "''"
+            },
+            {
+              "name": "deleted",
+              "type": "tinyint(1)",
+              "remark": "1-删除0未删除",
+              "chnname": "是否删除",
+              "defaultValue": "0"
+            },
+            {
+              "name": "status",
+              "type": "tinyint(1)",
+              "remark": "1-启用0未启用",
+              "chnname": "状态",
+              "defaultValue": "1"
+            },
+            {
+              "name": "remark",
+              "type": "String-256",
+              "remark": "",
+              "chnname": "备注",
+              "defaultValue": "''"
+            },
+            {
+              "name": "create_by",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "创建人",
+              "defaultValue": "''"
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间"
+            },
+            {
+              "name": "update_by",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人",
+              "defaultValue": "''",
+              "relationNoShow": false
+            },
+            {
+              "name": "update_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "租户表",
+          "remark": ""
+        },
+        {
+          "title": "t_keann_admin",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "tenant_code",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "租户CODE",
+              "notNull": true,
+              "defaultValue": ""
+            },
+            {
+              "name": "user_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "用户名",
+              "notNull": true,
+              "defaultValue": ""
+            },
+            {
+              "name": "pass_word",
+              "type": "String-256",
+              "remark": "",
+              "chnname": "密码",
+              "notNull": true
+            },
+            {
+              "name": "head_portrait",
+              "type": "String-256",
+              "remark": "",
+              "chnname": "头像",
+              "defaultValue": "''"
+            },
+            {
+              "name": "email",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "邮箱",
+              "defaultValue": "''"
+            },
+            {
+              "name": "mobile",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "手机",
+              "defaultValue": "''"
+            },
+            {
+              "name": "nick_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "昵称",
+              "defaultValue": "''"
+            },
+            {
+              "name": "expired",
+              "type": "tinyint(1)",
+              "remark": "1-过期0-未过期",
+              "chnname": "过期",
+              "defaultValue": "0"
+            },
+            {
+              "name": "locked",
+              "type": "tinyint(1)",
+              "remark": "1-锁定0-未锁定",
+              "chnname": "锁定",
+              "defaultValue": "0"
+            },
+            {
+              "name": "enabled",
+              "type": "tinyint(1)",
+              "remark": "1-启用0未启用",
+              "chnname": "状态",
+              "defaultValue": "1"
+            },
+            {
+              "name": "remark",
+              "type": "String-256",
+              "remark": "",
+              "chnname": "备注",
+              "defaultValue": "''"
+            },
+            {
+              "name": "admin_type",
+              "type": "tinyint(1)",
+              "remark": "0-超级管理员1-租户管理员2-普通管理员",
+              "chnname": "管理员类型",
+              "defaultValue": "2"
+            },
+            {
+              "name": "deleted",
+              "type": "tinyint(1)",
+              "remark": "1-删除0未删除",
+              "chnname": "删除",
+              "defaultValue": "0"
+            },
+            {
+              "name": "created_by",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "创建人",
+              "defaultValue": "''"
+            },
+            {
+              "name": "created_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间"
+            },
+            {
+              "name": "updated_by",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人",
+              "defaultValue": "''"
+            },
+            {
+              "name": "updated_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间"
+            }
+          ],
+          "indexs": [
+            {
+              "name": "unique_username",
+              "isUnique": true,
+              "fields": [
+                "user_name"
+              ]
+            }
+          ],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "管理用户"
+        },
+        {
+          "title": "t_keann_tenantcode",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "tenant_code",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "租户CODE",
+              "notNull": true
+            },
+            {
+              "name": "used",
+              "type": "tinyint(1)",
+              "remark": "0-未使用1使用",
+              "chnname": "是否使用",
+              "notNull": true
+            }
+          ],
+          "indexs": [
+            {
+              "name": "unique_code",
+              "isUnique": true,
+              "fields": [
+                "tenant_code"
+              ]
+            }
+          ],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "租户CODE表"
         }
       ],
       "graphCanvas": {

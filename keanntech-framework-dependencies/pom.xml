@@ -42,6 +42,8 @@
         <activation.version>1.1.1</activation.version>
         <config.processor.version>2.3.7.RELEASE</config.processor.version>
         <swagger.bootstrap.ui.version>1.9.3</swagger.bootstrap.ui.version>
+        <leaf.version>1.0.1-RELEASE</leaf.version>
+        <curator.version>5.1.0</curator.version>
     </properties>
 
     <dependencies>
@@ -147,6 +149,11 @@
                 <version>${swagger3.version}</version>
             </dependency>
             <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-data-rest</artifactId>
+                <version>${swagger3.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>swagger-bootstrap-ui</artifactId>
                 <version>${swagger.bootstrap.ui.version}</version>
@@ -185,6 +192,16 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>leaf-boot-starter</artifactId>
+                <groupId>com.sankuai.inf.leaf</groupId>
+                <version>${leaf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

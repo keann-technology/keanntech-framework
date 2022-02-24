@@ -21,8 +21,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
 
-        <mybatis.starter.version>2.2.1</mybatis.starter.version>
-        <hutool.version>5.4.0</hutool.version>
+        <mybatis.starter.version>2.2.2</mybatis.starter.version>
+        <hutool.version>5.7.20</hutool.version>
         <snakeyaml.version>1.29</snakeyaml.version>
         <jjwt.version>0.9.1</jjwt.version>
         <web.starter.version>2.6.2</web.starter.version>
@@ -30,18 +30,18 @@
         <security.starter.version>2.6.2</security.starter.version>
         <pagehelper.version>1.4.1</pagehelper.version>
         <druid.version>1.2.8</druid.version>
-        <common.lang3.version>3.10</common.lang3.version>
+        <common.lang3.version>3.12.0</common.lang3.version>
         <mybatis.plus.version>3.5.1</mybatis.plus.version>
         <swagger3.version>3.0.0</swagger3.version>
-        <spring.security.jwt.version>1.0.9.RELEASE</spring.security.jwt.version>
+        <spring.security.jwt.version>1.1.1.RELEASE</spring.security.jwt.version>
         <kf.security.version>1.0-SNAPSHOT</kf.security.version>
         <kf.common.version>1.0-SNAPSHOT</kf.common.version>
         <noggit.version>6.3.2.1</noggit.version>
-        <jaxb.version>2.3.0.1</jaxb.version>
+        <jaxb.version>3.0.1</jaxb.version>
         <jaxb.api.version>2.3.1</jaxb.api.version>
         <activation.version>1.1.1</activation.version>
         <config.processor.version>2.3.7.RELEASE</config.processor.version>
-        <swagger.bootstrap.ui.version>1.9.3</swagger.bootstrap.ui.version>
+        <swagger.bootstrap.ui.version>1.9.6</swagger.bootstrap.ui.version>
         <leaf.version>1.0.1-RELEASE</leaf.version>
         <curator.version>5.1.0</curator.version>
     </properties>

@@ -8,8 +8,8 @@
         <module>keanntech-framework-dependencies</module>
         <module>keanntech-framework-common</module>
         <module>keanntech-framework-gateway</module>
-        <module>keanntech-framework-admin</module>
         <module>keanntech-framework-security</module>
+        <module>keanntech-framework-auth</module>
     </modules>
 
     <parent>

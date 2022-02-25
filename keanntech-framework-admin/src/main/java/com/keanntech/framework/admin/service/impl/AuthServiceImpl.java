@@ -41,6 +41,7 @@ public class AuthServiceImpl implements AuthService {
         final String token = jwtTokenUtil.generateAccessToken(userDetail);
         //存储token
         jwtTokenUtil.putToken(username, token);
+        userDetail.setPassWord(null);
         return new ResponseUserToken(token, userDetail);
 
     }
@@ -50,6 +51,7 @@ public class AuthServiceImpl implements AuthService {
             //该方法会去调用userDetailsService.loadUserByUsername()去验证用户名和密码，如果正确，则存储该用户名密码到“security 的 context中”
             return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException | BadCredentialsException e) {
+            e.printStackTrace();
             throw new CustomException(ResultJson.failure(ResultCode.LOGIN_ERROR, e.getMessage()));
         }
     }

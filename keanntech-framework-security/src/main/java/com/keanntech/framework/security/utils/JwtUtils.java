@@ -25,6 +25,8 @@ public class JwtUtils {
 
     private static final String CLAIM_KEY_USER_ID = "user_id";
     private static final String CLAIM_KEY_AUTHORITIES = "scope";
+    private static final String CLAIM_KEY_TENANT_CODE = "tenant_code";
+    private static final String CLAIM_KEY_ADMIN_TYPE = "admin_type";
 
     private Map<String, String> tokenMap = new ConcurrentHashMap<>(32);
 
@@ -46,6 +48,8 @@ public class JwtUtils {
             long userId = getUserIdFromToken(token);
             String username = claims.getSubject();
             List<String> roleCodeList = (List) claims.get(CLAIM_KEY_AUTHORITIES);
+            String tenantCode = (String) claims.get(CLAIM_KEY_TENANT_CODE);
+            Integer adminType = Integer.valueOf(String.valueOf(claims.get(CLAIM_KEY_ADMIN_TYPE)));
             List<Roles> roleList = new ArrayList<>();
             if (Objects.nonNull(roleCodeList)) {
                 roleCodeList.forEach(role -> {
@@ -54,7 +58,7 @@ public class JwtUtils {
                     roleList.add(roles);
                 });
             }
-            userDetail = new UserDetails(userId, username, roleList, "");
+            userDetail = new UserDetails(userId, username, "", roleList, tenantCode, adminType);
         } catch (Exception e) {
             userDetail = null;
         }
@@ -97,6 +101,8 @@ public class JwtUtils {
     public String generateAccessToken(UserDetails userDetail) {
         Map<String, Object> claims = generateClaims(userDetail);
         claims.put(CLAIM_KEY_AUTHORITIES, authoritiesToArray(userDetail.getAuthorities()));
+        claims.put(CLAIM_KEY_TENANT_CODE, userDetail.getTenantCode());
+        claims.put(CLAIM_KEY_ADMIN_TYPE, userDetail.getAdminType());
         return generateAccessToken(userDetail.getUsername(), claims);
     }
 

@@ -14,15 +14,19 @@ public class UserDetail extends UserDetails implements Serializable {
 
     private long id;
     private String userName;
+    private String tenantCode;
+    private Integer adminType;
     private String passWord;
     private List<Roles> roleList;
 
-    public UserDetail(long id, String userName, List<Roles> roleList, String passWord) {
-        super(id, userName, roleList, passWord);
+    public UserDetail(long id, String userName, String passWord, List<Roles> roleList, String tenantCode, Integer adminType) {
+        super(id, userName, passWord, roleList, tenantCode, adminType);
         this.id = id;
         this.userName = userName;
-        this.passWord = passWord;
+        this.tenantCode = tenantCode;
+        this.adminType = adminType;
         this.roleList = roleList;
+        this.passWord = passWord;
     }
 
 

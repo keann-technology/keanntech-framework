@@ -17,13 +17,17 @@ public class UserDetails implements org.springframework.security.core.userdetail
     private long id;
     private String userName;
     private String passWord;
+    private String tenantCode;
+    private Integer adminType;
     private List<Roles> roleList;
 
-    public UserDetails(long id, String userName, List<Roles> roleList, String passWord) {
+    public UserDetails(long id, String userName, String passWord, List<Roles> roleList, String tenantCode, Integer adminType) {
         this.id = id;
         this.userName = userName;
-        this.passWord = passWord;
+        this.tenantCode = tenantCode;
         this.roleList = roleList;
+        this.adminType = adminType;
+        this.passWord = passWord;
     }
 
     /**
@@ -40,13 +44,17 @@ public class UserDetails implements org.springframework.security.core.userdetail
         return authorities;
     }
 
-    public long getId() {
-        return id;
-    }
-
     @Override
     public String getPassword() {
         return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public long getId() {
+        return id;
     }
 
     @Override
@@ -101,8 +109,19 @@ public class UserDetails implements org.springframework.security.core.userdetail
         this.userName = userName;
     }
 
-    public void setPassword(String passWord) {
-        this.passWord = passWord;
+    public String getTenantCode() {
+        return tenantCode;
     }
 
+    public void setTenantCode(String tenantCode) {
+        this.tenantCode = tenantCode;
+    }
+
+    public Integer getAdminType() {
+        return adminType;
+    }
+
+    public void setAdminType(Integer adminType) {
+        this.adminType = adminType;
+    }
 }

@@ -13,13 +13,13 @@ import java.util.Date;
 
 /**
     @Author
-    @Create 2022-02-11 15:34:49
+    @Create 2022-02-25 09:48:28
     @Desc ...
 */
 
-@ApiModel(value = "后台用户 ")
+@ApiModel(value = "管理用户 ")
 @Data
-@TableName(value = "t_admin")
+@TableName(value = "t_keann_admin")
 public class Admin implements Serializable {
     /**
      * ID
@@ -27,6 +27,13 @@ public class Admin implements Serializable {
     @TableId(value = "id", type = IdType.INPUT)
     @ApiModelProperty(value = "ID")
     private Long id;
+
+    /**
+     * 租户CODE
+     */
+    @TableField(value = "tenant_code")
+    @ApiModelProperty(value = "租户CODE")
+    private String tenantCode;
 
     /**
      * 用户名
@@ -71,13 +78,6 @@ public class Admin implements Serializable {
     private String nickName;
 
     /**
-     * 状态 1-启用0未启用
-     */
-    @TableField(value = "enabled")
-    @ApiModelProperty(value = "状态 1-启用0未启用")
-    private Boolean enabled;
-
-    /**
      * 过期 1-过期0-未过期
      */
     @TableField(value = "expired")
@@ -92,11 +92,11 @@ public class Admin implements Serializable {
     private Boolean locked;
 
     /**
-     * 是否超级管理员1-是0-否
+     * 状态 1-启用0未启用
      */
-    @TableField(value = "super_admin")
-    @ApiModelProperty(value = "是否超级管理员1-是0-否")
-    private Boolean superAdmin;
+    @TableField(value = "enabled")
+    @ApiModelProperty(value = "状态 1-启用0未启用")
+    private Boolean enabled;
 
     /**
      * 备注
@@ -106,11 +106,18 @@ public class Admin implements Serializable {
     private String remark;
 
     /**
+     * 管理员类型 0-超级管理员1-租户管理员
+     */
+    @TableField(value = "admin_type")
+    @ApiModelProperty(value = "管理员类型 0-超级管理员1-租户管理员")
+    private Integer adminType;
+
+    /**
      * 删除 1-删除0未删除
      */
-    @TableField(value = "del_flag")
+    @TableField(value = "deleted")
     @ApiModelProperty(value = "删除 1-删除0未删除")
-    private Boolean delFlag;
+    private Boolean deleted;
 
     /**
      * 创建人

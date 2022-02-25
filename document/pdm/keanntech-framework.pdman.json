@@ -680,10 +680,10 @@
             },
             {
               "name": "admin_type",
-              "type": "tinyint(1)",
-              "remark": "0-超级管理员1-租户管理员2-普通管理员",
+              "type": "Integer",
+              "remark": "0-超级管理员1-租户管理员",
               "chnname": "管理员类型",
-              "defaultValue": "2"
+              "defaultValue": "1"
             },
             {
               "name": "deleted",
@@ -723,6 +723,13 @@
             {
               "name": "unique_username",
               "isUnique": true,
+              "fields": [
+                "user_name"
+              ]
+            },
+            {
+              "name": "index_username",
+              "isUnique": false,
               "fields": [
                 "user_name"
               ]
@@ -774,7 +781,7 @@
               "relationNoShow": true
             }
           ],
-          "chnname": "管理用户"
+          "chnname": "管理员表"
         },
         {
           "title": "t_keann_tenantcode",
@@ -800,7 +807,8 @@
               "type": "tinyint(1)",
               "remark": "0-未使用1使用",
               "chnname": "是否使用",
-              "notNull": true
+              "notNull": true,
+              "defaultValue": "0"
             }
           ],
           "indexs": [

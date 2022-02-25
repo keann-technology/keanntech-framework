@@ -7,7 +7,7 @@ spring:
       master:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://rm-2zen45yq88hx5djvjlo.mysql.rds.aliyuncs.com:3306/keanntech-framework?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&allowMultiQueries=true
+        url: jdbc:mysql://rm-2zen45yq88hx5djvjlo.mysql.rds.aliyuncs.com:3306/keanntech-schema?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&allowMultiQueries=true
         username: keanntech
         password: Qing1981yFu12m22d
       slave:

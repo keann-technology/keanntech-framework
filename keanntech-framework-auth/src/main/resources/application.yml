@@ -43,3 +43,6 @@ keanntech:
     - /doc.html
     - /webjars/**
     - /api/admin/v1/login
+  tenant:
+    header: tenantCode
+  table-pre: t_keann_

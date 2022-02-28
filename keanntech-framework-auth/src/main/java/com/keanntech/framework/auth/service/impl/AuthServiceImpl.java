@@ -1,11 +1,11 @@
 package com.keanntech.framework.auth.service.impl;
 
-import com.keanntech.framework.auth.domain.ResponseUserToken;
-import com.keanntech.framework.auth.domain.UserDetail;
+import com.keanntech.framework.auth.domain.vo.AdminUserVo;
 import com.keanntech.framework.auth.exception.CustomException;
 import com.keanntech.framework.auth.service.AuthService;
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;
+import com.keanntech.framework.security.domain.UserDetail;
 import com.keanntech.framework.security.utils.JwtUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -31,7 +31,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public ResponseUserToken login(String username, String password) {
+    public AdminUserVo login(String username, String password) {
         //用户验证
         final Authentication authentication = authenticate(username, password);
         //存储认证信息
@@ -39,11 +39,22 @@ public class AuthServiceImpl implements AuthService {
         //生成token
         final UserDetail userDetail = (UserDetail) authentication.getPrincipal();
         final String token = jwtTokenUtil.generateAccessToken(userDetail);
-        //存储token
-        jwtTokenUtil.putToken(username, token);
-        userDetail.setPassWord(null);
-        return new ResponseUserToken(token, userDetail);
+        final String refreshToken = jwtTokenUtil.generateRefreshToken(userDetail);
+        return AdminUserVo.builder()
+                .id(userDetail.getId())
+                .userName(userDetail.getUsername())
+                .tenantCode(userDetail.getTenantCode())
+                .adminType(userDetail.getAdminType())
+                .token(token)
+                .refreshToken(refreshToken)
+                .build();
 
+    }
+
+    @Override
+    public void loginOut() {
+        UserDetail userDetail = jwtTokenUtil.getUserDetailFromAuthContext();
+        jwtTokenUtil.removeToken(userDetail.getId());
     }
 
     private Authentication authenticate(String username, String password) {

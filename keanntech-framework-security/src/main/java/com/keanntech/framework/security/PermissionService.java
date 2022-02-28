@@ -1,7 +1,7 @@
 package com.keanntech.framework.security;
 
 import com.keanntech.framework.common.utils.ServletUtils;
-import com.keanntech.framework.security.domain.UserDetails;
+import com.keanntech.framework.security.domain.UserDetail;
 import com.keanntech.framework.security.utils.JwtUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,7 +34,7 @@ public class PermissionService {
         if (StringUtils.isBlank(token) || StringUtils.isEmpty(token)) {
             return false;
         }
-        UserDetails userDetails = jwtUtils.getUserFromToken(token);
+        UserDetail userDetails = jwtUtils.getUserDetailFromToken(token);
         Set<String> roles = userDetails.getAuthorities().stream().map(e -> e.getAuthority()).collect(Collectors.toSet());
 
         return roles.contains(role);

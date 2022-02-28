@@ -1,6 +1,6 @@
 package com.keanntech.framework.auth.service;
 
-import com.keanntech.framework.auth.domain.ResponseUserToken;
+import com.keanntech.framework.auth.domain.vo.AdminUserVo;
 
 /**
  * @Author
@@ -15,5 +15,10 @@ public interface AuthService {
      * @param password
      * @return
      */
-    ResponseUserToken login(String username, String password);
+    AdminUserVo login(String username, String password);
+
+    /**
+     * 退出
+     */
+    void loginOut();
 }

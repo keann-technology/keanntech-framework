@@ -1,9 +1,11 @@
 package com.keanntech.framework.auth.controller;
 
-import com.keanntech.framework.auth.domain.Admin;
-import com.keanntech.framework.auth.domain.ResponseUserToken;
+import com.keanntech.framework.auth.domain.dto.LoginAdminDto;
+import com.keanntech.framework.auth.domain.vo.AdminUserVo;
 import com.keanntech.framework.auth.service.AuthService;
+import com.keanntech.framework.common.DataSourceKey;
 import com.keanntech.framework.common.annotation.ApiVersion;
+import com.keanntech.framework.common.annotation.DataSource;
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;
 import io.swagger.annotations.Api;
@@ -35,13 +37,26 @@ public class AuthController {
     @PostMapping(value = "/login")
     @ApiOperation(value = "登陆", notes = "登陆成功返回token,登陆之前请先注册账号")
     @ApiVersion()
-    public ResultJson<ResponseUserToken> login(@RequestBody Admin admin){
+    @DataSource(DataSourceKey.MASTER)
+    public ResultJson<AdminUserVo> login(@RequestBody LoginAdminDto admin){
         try {
-            final ResponseUserToken response = authService.login(admin.getUserName(), admin.getPassWord());
-            return ResultJson.ok(response);
+            final AdminUserVo adminUserVo = authService.login(admin.getUserName(), admin.getPassWord());
+            return ResultJson.ok(adminUserVo);
         } catch (Exception e) {
             e.printStackTrace();
             return ResultJson.failure(ResultCode.LOGIN_ERROR);
+        }
+    }
+
+    @PostMapping(value = "/loginOut")
+    @ApiOperation(value = "退出")
+    @ApiVersion
+    public ResultJson loginOut() {
+        try {
+            authService.loginOut();
+            return ResultJson.ok();
+        } catch (Exception e) {
+            return ResultJson.failure(ResultCode.SERVER_ERROR);
         }
     }
 

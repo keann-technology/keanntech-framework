@@ -14,7 +14,9 @@ jwt:
   header: Authorization
   secret: ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()zyxwvutsrqponmlkjihgfedcba1234567890
   #token有效期一天
-  expiration: 86400
+  access-token-expiration: 86400
+  #refresh-token有效期两天
+  refresh-token-expiration: 172800
   tokenHead: "Bearer "
 
 mybatis:
@@ -45,4 +47,5 @@ keanntech:
     - /api/admin/v1/login
   tenant:
     header: tenantCode
+    default-code: 000000
   table-pre: t_keann_

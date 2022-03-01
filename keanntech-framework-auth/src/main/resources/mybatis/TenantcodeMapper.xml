@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.keanntech.framework.auth.mapper.TenantcodeMapper">
+  <resultMap id="BaseResultMap" type="com.keanntech.framework.auth.domain.Tenantcode">
+    <!--@mbg.generated-->
+    <!--@Table t_keann_tenantcode-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode" />
+    <result column="used" jdbcType="BOOLEAN" property="used" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, tenant_code, used
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update t_keann_tenantcode
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tenant_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.tenantCode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="used = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.used,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update t_keann_tenantcode
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tenant_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.tenantCode != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.tenantCode,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="used = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.used != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.used,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_keann_tenantcode
+    (tenant_code, used)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.tenantCode,jdbcType=VARCHAR}, #{item.used,jdbcType=BOOLEAN})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.keanntech.framework.auth.domain.Tenantcode" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_keann_tenantcode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      tenant_code,
+      used,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{tenantCode,jdbcType=VARCHAR},
+      #{used,jdbcType=BOOLEAN},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      tenant_code = #{tenantCode,jdbcType=VARCHAR},
+      used = #{used,jdbcType=BOOLEAN},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.keanntech.framework.auth.domain.Tenantcode" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_keann_tenantcode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantCode != null">
+        tenant_code,
+      </if>
+      <if test="used != null">
+        used,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantCode != null">
+        #{tenantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="used != null">
+        #{used,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantCode != null">
+        tenant_code = #{tenantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="used != null">
+        used = #{used,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="countByUsed" resultType="java.lang.Integer">
+    SELECT COUNT(id) FROM t_keann_tenantcode WHERE used = #{used,jdbcType=INTEGER}
+  </select>
+
+  <select id="getUnusedTenantCode" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" /> FROM t_keann_tenantcode WHERE used = 0 LIMIT 1
+  </select>
+</mapper>

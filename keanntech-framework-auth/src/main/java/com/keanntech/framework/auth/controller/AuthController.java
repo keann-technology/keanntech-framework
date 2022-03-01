@@ -3,9 +3,7 @@ package com.keanntech.framework.auth.controller;
 import com.keanntech.framework.auth.domain.dto.LoginAdminDto;
 import com.keanntech.framework.auth.domain.vo.AdminUserVo;
 import com.keanntech.framework.auth.service.AuthService;
-import com.keanntech.framework.common.DataSourceKey;
 import com.keanntech.framework.common.annotation.ApiVersion;
-import com.keanntech.framework.common.annotation.DataSource;
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;
 import io.swagger.annotations.Api;
@@ -22,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api("登录及刷新TOKEN")
-@RequestMapping("/api/admin/{version}")
+@RequestMapping("/api/auth/{version}")
 public class AuthController {
 
     private final AuthService authService;
@@ -37,7 +35,6 @@ public class AuthController {
     @PostMapping(value = "/login")
     @ApiOperation(value = "登陆", notes = "登陆成功返回token,登陆之前请先注册账号")
     @ApiVersion()
-    @DataSource(DataSourceKey.MASTER)
     public ResultJson<AdminUserVo> login(@RequestBody LoginAdminDto admin){
         try {
             final AdminUserVo adminUserVo = authService.login(admin.getUserName(), admin.getPassWord());

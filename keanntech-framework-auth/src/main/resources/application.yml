@@ -44,8 +44,8 @@ keanntech:
     - /swagger-ui.html
     - /doc.html
     - /webjars/**
-    - /api/admin/v1/login
+    - /api/auth/v1/login
+    - /api/auth/v1/loginOut
   tenant:
     header: tenantCode
-    default-code: 000000
   table-pre: t_keann_

@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Set;
 
 /**
  * @author miaoqingfu
@@ -22,5 +25,6 @@ public class AdminUserVo {
     private Integer adminType;
     private String token;
     private String refreshToken;
+    private Set<GrantedAuthority> authorities;
 
 }

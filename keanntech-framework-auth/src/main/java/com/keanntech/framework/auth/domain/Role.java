@@ -4,29 +4,29 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.keanntech.framework.security.domain.Roles;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 后台角色
- * @Author
- * @Create 2022-01-26 09:39:24
- * @Desc ...
+    @Author
+    @Create 2022-03-01 10:35:25
+    @Desc ...
 */
 
 @ApiModel(value = "后台角色 ")
 @Data
-@TableName(value = "t_admin_role")
-public class AdminRole extends Roles implements Serializable {
-
-    public AdminRole(Long id, String roleName, String roleCode){
-        super(id, roleName, roleCode);
-    }
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@TableName(value = "t_keann_role")
+public class Role implements Serializable {
     /**
      * ID
      */
@@ -56,17 +56,10 @@ public class AdminRole extends Roles implements Serializable {
     private String description;
 
     /**
-     * 后台用户数
-     */
-    @TableField(value = "admin_count")
-    @ApiModelProperty(value = "后台用户数")
-    private Integer adminCount;
-
-    /**
-     * 状态 0-启用1-禁用
+     * 状态 0-启用 1-禁用
      */
     @TableField(value = "`status`")
-    @ApiModelProperty(value = "状态 0-启用1-禁用")
+    @ApiModelProperty(value = "状态 0-启用 1-禁用")
     private Boolean status;
 
     /**
@@ -77,11 +70,11 @@ public class AdminRole extends Roles implements Serializable {
     private Integer sort;
 
     /**
-     * 删除标识 0-未删除1-删除
+     * 删除标识 0-未删除 1-删除
      */
-    @TableField(value = "del_flag")
-    @ApiModelProperty(value = "删除标识 0-未删除1-删除")
-    private Boolean delFlag;
+    @TableField(value = "deleted")
+    @ApiModelProperty(value = "删除标识 0-未删除 1-删除")
+    private Boolean deleted;
 
     /**
      * 创建人

@@ -2,6 +2,8 @@ package com.keanntech.framework.auth.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.keanntech.framework.auth.domain.Admin;
+import com.keanntech.framework.common.DataSourceKey;
+import com.keanntech.framework.common.annotation.DataSource;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -30,5 +32,6 @@ public interface AdminMapper extends BaseMapper<Admin> {
      * @param userName
      * @return
      */
+    @DataSource(value = DataSourceKey.MASTER)
     Admin findByUserName(@Param("userName") String userName);
 }

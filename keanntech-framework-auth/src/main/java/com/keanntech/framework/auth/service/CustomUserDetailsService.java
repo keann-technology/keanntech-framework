@@ -3,11 +3,10 @@ package com.keanntech.framework.auth.service;
 import com.keanntech.framework.auth.constant.TenantConstant;
 import com.keanntech.framework.auth.domain.Admin;
 import com.keanntech.framework.auth.mapper.AdminMapper;
-import com.keanntech.framework.auth.mapper.AdminRoleMapper;
-import com.keanntech.framework.common.utils.ServletUtils;
+import com.keanntech.framework.auth.mapper.RoleMapper;
+import com.keanntech.framework.auth.mapper.RoleRelationMapper;
 import com.keanntech.framework.security.domain.UserDetail;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -37,7 +36,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     private AdminMapper adminMapper;
 
     @Resource
-    private AdminRoleMapper adminRoleMapper;
+    private RoleRelationMapper roleRelationMapper;
+
+    @Resource
+    private RoleMapper roleMapper;
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
@@ -45,12 +47,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (admin == null) {
             throw new UsernameNotFoundException(String.format("No user found with username '%s'.", name));
         }
-        String tenantCode = ServletUtils.getRequest().getHeader(tenantHeader);
-
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        if (!StringUtils.isEmpty(tenantCode) && !tenantCode.equals(TenantConstant.DEFAULT_TENANT_CODE.getCode())) {
-            grantedAuthorities = adminRoleMapper.findRoleByUserId(admin.getId()).stream()
-                    .map(role -> new SimpleGrantedAuthority(adminRoleMapper.selectById(role.getId()).getRoleName()))
+        if (admin.getTenantCode().equals(TenantConstant.DEFAULT_TENANT_CODE)) {
+            grantedAuthorities.add(new SimpleGrantedAuthority("*"));
+        } else {
+            grantedAuthorities = roleRelationMapper.findRoleByUserId(admin.getId()).stream()
+                    .map(role -> new SimpleGrantedAuthority(roleMapper.findById(role.getId()).getRoleCode()))
                     .collect(Collectors.toSet());
         }
 

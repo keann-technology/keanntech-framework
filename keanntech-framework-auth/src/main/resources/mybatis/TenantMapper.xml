@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.keanntech.framework.auth.mapper.TenantMapper">
+  <resultMap id="BaseResultMap" type="com.keanntech.framework.auth.domain.Tenant">
+    <!--@mbg.generated-->
+    <!--@Table t_keann_tenant-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="tenant_name" jdbcType="VARCHAR" property="tenantName" />
+    <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode" />
+    <result column="contacts" jdbcType="VARCHAR" property="contacts" />
+    <result column="contacts_tel" jdbcType="VARCHAR" property="contactsTel" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="domain" jdbcType="VARCHAR" property="domain" />
+    <result column="deleted" jdbcType="BOOLEAN" property="deleted" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, tenant_name, tenant_code, contacts, contacts_tel, address, `domain`, deleted, 
+    `status`, remark, create_by, create_time, update_by, update_time
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update t_keann_tenant
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tenant_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.tenantName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tenant_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.tenantCode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="contacts = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.contacts,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="contacts_tel = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.contactsTel,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="address = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.address,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`domain` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.domain,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.deleted,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="remark = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.remark,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.updateBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update t_keann_tenant
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tenant_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.tenantName != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.tenantName,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="tenant_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.tenantCode != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.tenantCode,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="contacts = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.contacts != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.contacts,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="contacts_tel = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.contactsTel != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.contactsTel,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="address = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.address != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.address,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`domain` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.domain != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.domain,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.deleted != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.deleted,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.status != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="remark = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.remark != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.remark,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createBy != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.createBy,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateBy != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.updateBy,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_keann_tenant
+    (tenant_name, tenant_code, contacts, contacts_tel, address, `domain`, deleted, `status`, 
+      remark, create_by, create_time, update_by, update_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.tenantName,jdbcType=VARCHAR}, #{item.tenantCode,jdbcType=VARCHAR}, #{item.contacts,jdbcType=VARCHAR}, 
+        #{item.contactsTel,jdbcType=VARCHAR}, #{item.address,jdbcType=VARCHAR}, #{item.domain,jdbcType=VARCHAR}, 
+        #{item.deleted,jdbcType=BOOLEAN}, #{item.status,jdbcType=BOOLEAN}, #{item.remark,jdbcType=VARCHAR}, 
+        #{item.createBy,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateBy,jdbcType=VARCHAR}, 
+        #{item.updateTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.keanntech.framework.auth.domain.Tenant" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_keann_tenant
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      tenant_name,
+      tenant_code,
+      contacts,
+      contacts_tel,
+      address,
+      `domain`,
+      deleted,
+      `status`,
+      remark,
+      create_by,
+      create_time,
+      update_by,
+      update_time,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{tenantName,jdbcType=VARCHAR},
+      #{tenantCode,jdbcType=VARCHAR},
+      #{contacts,jdbcType=VARCHAR},
+      #{contactsTel,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR},
+      #{domain,jdbcType=VARCHAR},
+      #{deleted,jdbcType=BOOLEAN},
+      #{status,jdbcType=BOOLEAN},
+      #{remark,jdbcType=VARCHAR},
+      #{createBy,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP},
+      #{updateBy,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=TIMESTAMP},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      tenant_name = #{tenantName,jdbcType=VARCHAR},
+      tenant_code = #{tenantCode,jdbcType=VARCHAR},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      contacts_tel = #{contactsTel,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      `domain` = #{domain,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=BOOLEAN},
+      `status` = #{status,jdbcType=BOOLEAN},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.keanntech.framework.auth.domain.Tenant" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_keann_tenant
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tenantName != null">
+        tenant_name,
+      </if>
+      <if test="tenantCode != null">
+        tenant_code,
+      </if>
+      <if test="contacts != null">
+        contacts,
+      </if>
+      <if test="contactsTel != null">
+        contacts_tel,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="domain != null">
+        `domain`,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantName != null">
+        #{tenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantCode != null">
+        #{tenantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsTel != null">
+        #{contactsTel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="domain != null">
+        #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tenantName != null">
+        tenant_name = #{tenantName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantCode != null">
+        tenant_code = #{tenantCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contacts != null">
+        contacts = #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsTel != null">
+        contacts_tel = #{contactsTel,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="domain != null">
+        `domain` = #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

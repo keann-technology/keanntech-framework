@@ -12,8 +12,13 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author miaoqingfu
@@ -40,6 +45,7 @@ public class AuthServiceImpl implements AuthService {
         final UserDetail userDetail = (UserDetail) authentication.getPrincipal();
         final String token = jwtTokenUtil.generateAccessToken(userDetail);
         final String refreshToken = jwtTokenUtil.generateRefreshToken(userDetail);
+        Set<GrantedAuthority> grantedAuthorities = userDetail.getAuthorities().stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toSet());
         return AdminUserVo.builder()
                 .id(userDetail.getId())
                 .userName(userDetail.getUsername())
@@ -47,6 +53,7 @@ public class AuthServiceImpl implements AuthService {
                 .adminType(userDetail.getAdminType())
                 .token(token)
                 .refreshToken(refreshToken)
+                .authorities(grantedAuthorities)
                 .build();
 
     }

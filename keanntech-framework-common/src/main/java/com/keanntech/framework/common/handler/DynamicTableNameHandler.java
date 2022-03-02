@@ -1,4 +1,4 @@
-package com.keanntech.framework.auth.handler;
+package com.keanntech.framework.common.handler;
 
 import com.baomidou.mybatisplus.extension.plugins.handler.TableNameHandler;
 import com.keanntech.framework.common.DataSourceKey;

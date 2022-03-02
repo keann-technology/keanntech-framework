@@ -1,9 +1,9 @@
-package com.keanntech.framework.auth.config;
+package com.keanntech.framework.common.config;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
-import com.keanntech.framework.auth.datasource.DynamicRoutingDataSource;
 import com.keanntech.framework.common.DataSourceKey;
 import com.keanntech.framework.common.datasource.DynamicDataSourceContextHolder;
+import com.keanntech.framework.common.datasource.DynamicRoutingDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

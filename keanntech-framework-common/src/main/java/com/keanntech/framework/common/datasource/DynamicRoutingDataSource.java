@@ -1,6 +1,5 @@
-package com.keanntech.framework.auth.datasource;
+package com.keanntech.framework.common.datasource;
 
-import com.keanntech.framework.common.datasource.DynamicDataSourceContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

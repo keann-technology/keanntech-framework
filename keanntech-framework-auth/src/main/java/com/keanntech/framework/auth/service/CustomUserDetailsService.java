@@ -7,7 +7,6 @@ import com.keanntech.framework.auth.mapper.RoleMapper;
 import com.keanntech.framework.auth.mapper.RoleRelationMapper;
 import com.keanntech.framework.security.domain.UserDetail;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,9 +27,6 @@ import java.util.stream.Collectors;
 @Component(value = "customUserDetailsService")
 @NoArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
-
-    @Value("${keanntech.tenant.header}")
-    private String tenantHeader;
 
     @Resource
     private AdminMapper adminMapper;

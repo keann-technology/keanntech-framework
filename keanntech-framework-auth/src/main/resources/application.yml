@@ -26,6 +26,14 @@ mybatis:
 mybatis-plus:
   mapper-locations: classpath*:mybatis/*Mapper.xml
 
+swagger:
+  enable: true
+  application-name: 基于多租户的开发框架
+  application-version: 1.0
+  application-description: 基于多租户的开发框架
+  try-host: http://127.0.0.1:${server.port}
+
+
 keanntech:
   apiPathWhiteConfig:
     - /favicon.ico
@@ -35,17 +43,18 @@ keanntech:
     - /**/*.gif
     - /**/*.ttf
     - /v3/**
-    - /v2/api-docs
-    - /swagger-ui/**
+    - /v2/**
     - /swagger-resources/**
-    - /swagger-resources/configuration/ui
-    - /swagger-resources
-    - /swagger-resources/configuration/security
+    - /**/swagger-ui.html
     - /swagger-ui.html
+    - /**/doc.html
     - /doc.html
     - /webjars/**
     - /api/auth/v1/login
     - /api/auth/v1/loginOut
+    - /swagger-resources/configuration/ui
+    - /swagger-resources
+    - /swagger-resources/configuration/security
   tenant:
     header: tenantCode
   table-pre: t_keann_

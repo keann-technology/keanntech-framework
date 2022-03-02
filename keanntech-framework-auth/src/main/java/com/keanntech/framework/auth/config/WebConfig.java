@@ -1,13 +1,8 @@
 package com.keanntech.framework.auth.config;
 
-import com.keanntech.framework.common.CustomRequestMappingHandlerMapping;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.format.support.FormattingConversionService;
-import org.springframework.web.accept.ContentNegotiationManager;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-import org.springframework.web.servlet.resource.ResourceUrlProvider;
 
 /**
  * @author miaoqingfu
@@ -16,12 +11,28 @@ import org.springframework.web.servlet.resource.ResourceUrlProvider;
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
 
+    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+            "classpath:/META-INF/resources/", "classpath:/resources/",
+            "classpath:/static/", "classpath:/public/" };
+
     @Override
-    public RequestMappingHandlerMapping requestMappingHandlerMapping(@Qualifier("mvcContentNegotiationManager") ContentNegotiationManager contentNegotiationManager, @Qualifier("mvcConversionService") FormattingConversionService conversionService, @Qualifier("mvcResourceUrlProvider") ResourceUrlProvider resourceUrlProvider) {
-        RequestMappingHandlerMapping handlerMapping = new CustomRequestMappingHandlerMapping();
-        handlerMapping.setOrder(0);
-        handlerMapping.setContentNegotiationManager(contentNegotiationManager);
-        handlerMapping.setInterceptors(getInterceptors(conversionService, resourceUrlProvider));
-        return handlerMapping;
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        //将templates目录下的CSS、JS文件映射为静态资源，防止Spring把这些资源识别成thymeleaf模版
+        registry.addResourceHandler("/templates/**.js").addResourceLocations("classpath:/templates/");
+        registry.addResourceHandler("/templates/**.css").addResourceLocations("classpath:/templates/");
+        //其他静态资源
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+        //swagger增加url映射
+        registry.addResourceHandler("/swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/doc.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("favicon.ico")
+                .addResourceLocations("classpath:/static/favicon.ico");
+        registry.addResourceHandler("/**").addResourceLocations(
+                CLASSPATH_RESOURCE_LOCATIONS);
+        super.addResourceHandlers(registry);
     }
 }

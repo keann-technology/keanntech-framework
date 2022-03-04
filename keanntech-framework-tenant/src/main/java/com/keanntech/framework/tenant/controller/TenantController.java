@@ -3,7 +3,6 @@ package com.keanntech.framework.tenant.controller;
 import com.keanntech.framework.common.annotation.ApiVersion;
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;
-import com.keanntech.framework.tenant.constant.TenantConstant;
 import com.keanntech.framework.tenant.domain.Tenant;
 import com.keanntech.framework.tenant.service.TenantService;
 import io.swagger.annotations.Api;
@@ -32,7 +31,7 @@ public class TenantController {
     }
 
     @PostMapping("/regTenant")
-    @PreAuthorize("authentication.principal.tenantCode == '" + TenantConstant.DEFAULT_TENANT_CODE +  "'")
+    @PreAuthorize("authentication.principal.adminType == 0")
     @ApiVersion()
     public ResultJson regTenant(@RequestBody Tenant tenant) {
         log.info("注册租户：{}", tenant.toString());

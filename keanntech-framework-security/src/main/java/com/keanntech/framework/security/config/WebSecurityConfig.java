@@ -25,14 +25,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     @Qualifier("jwtAuthenticationEntryPoint")
     private AuthenticationEntryPoint authenticationEntryPoint;
+
     @Autowired
     @Qualifier("restAuthenticationAccessDeniedHandler")
     private AccessDeniedHandler accessDeniedHandler;
+
     @Autowired
     @Qualifier("customUserDetailsService")
     private UserDetailsService userDetailsService;
+
     @Autowired
     private JwtAuthenticationTokenFilter authenticationTokenFilter;
+
     @Autowired
     private ApiPathWhiteConfig apiPathWhiteConfig;
 

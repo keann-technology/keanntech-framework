@@ -1,10 +1,10 @@
 package com.keanntech.framework.security.jwt;
 
+import com.keanntech.framework.security.config.JwtConfig;
 import com.keanntech.framework.security.domain.UserDetail;
 import com.keanntech.framework.security.utils.JwtUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -23,23 +23,23 @@ import java.io.IOException;
  * @date 2022年01月26日 8:28 上午
  */
 @Component
-@RefreshScope
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
-    @Value(value = "${jwt.header}")
-    private String jwtHeader;
-
-    @Value("${jwt.tokenHead}")
-    private String tokenHead;
+    private JwtConfig jwtConfig;
 
     @Resource
     private JwtUtils jwtUtils;
 
+    @Autowired
+    public void setJwtConfig(JwtConfig jwtConfig) {
+        this.jwtConfig = jwtConfig;
+    }
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        String authToken = request.getHeader(this.jwtHeader);
-        final String authTokenStart = this.tokenHead;
+        String authToken = request.getHeader(jwtConfig.getHeader());
+        final String authTokenStart = jwtConfig.getTokenHead();
 
         if (StringUtils.isNotEmpty(authToken)) {
             if (authToken.startsWith(authTokenStart)) {

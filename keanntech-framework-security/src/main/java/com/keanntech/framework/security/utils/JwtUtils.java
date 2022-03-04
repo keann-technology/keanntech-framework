@@ -1,10 +1,10 @@
 package com.keanntech.framework.security.utils;
 
+import com.keanntech.framework.security.config.JwtConfig;
 import com.keanntech.framework.security.domain.UserDetail;
 import io.jsonwebtoken.*;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
  * @date 2022年01月26日 8:52 上午
  */
 @Component
-@RefreshScope
 public class JwtUtils {
 
     private static final String CLAIM_KEY_USER_ID = "userId";
@@ -30,16 +29,14 @@ public class JwtUtils {
     private final Map<Long, String> tokenMap = new HashMap<>();
     private final Map<Long, String> refreshTokenMap = new HashMap<>();
 
-    @Value("${jwt.secret}")
-    private String secret;
-
-    @Value("${jwt.access-token-expiration}")
-    private Long accessTokenExpiration;
-
-    @Value("${jwt.refresh-token-expiration}")
-    private Long refreshTokenExpiration;
+    private JwtConfig jwtConfig;
 
     private final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
+
+    @Autowired
+    public void setJwtConfig(JwtConfig jwtConfig) {
+        this.jwtConfig = jwtConfig;
+    }
 
     public UserDetail getUserDetailFromToken(String token) {
         final Claims claims = getClaimsFromToken(token);
@@ -73,13 +70,13 @@ public class JwtUtils {
 
     public String generateAccessToken(UserDetail userDetail) {
 
-        String token = generateToken(userDetail, accessTokenExpiration);
+        String token = generateToken(userDetail, jwtConfig.getAccessTokenExpiration());
         tokenMap.put(userDetail.getId(), token);
         return token;
     }
 
     public String generateRefreshToken(UserDetail userDetail) {
-        String refreshToken = generateToken(userDetail, refreshTokenExpiration);
+        String refreshToken = generateToken(userDetail, jwtConfig.getRefreshTokenExpiration());
         refreshTokenMap.put(userDetail.getId(), refreshToken);
         return refreshToken;
     }
@@ -99,7 +96,7 @@ public class JwtUtils {
         Claims claims;
         try {
             claims = Jwts.parser()
-                    .setSigningKey(secret)
+                    .setSigningKey(jwtConfig.getSecret())
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
@@ -123,7 +120,7 @@ public class JwtUtils {
     public Boolean isRefreshTokenExpired(String refreshToken) {
         Date expiration;
         try {
-            expiration = Jwts.parser().setSigningKey(secret).parseClaimsJws(refreshToken).getBody().getExpiration();
+            expiration = Jwts.parser().setSigningKey(jwtConfig.getSecret()).parseClaimsJws(refreshToken).getBody().getExpiration();
         } catch (ExpiredJwtException e) {
             return true;
         }
@@ -194,7 +191,7 @@ public class JwtUtils {
                 .setIssuedAt(new Date())
                 .setExpiration(generateExpirationDate(expiration))
                 .compressWith(CompressionCodecs.DEFLATE)
-                .signWith(SIGNATURE_ALGORITHM, secret)
+                .signWith(SIGNATURE_ALGORITHM, jwtConfig.getSecret())
                 .compact();
     }
 

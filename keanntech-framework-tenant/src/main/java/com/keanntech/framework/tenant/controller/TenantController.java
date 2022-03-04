@@ -1,11 +1,11 @@
-package com.keanntech.framework.auth.controller;
+package com.keanntech.framework.tenant.controller;
 
-import com.keanntech.framework.auth.constant.TenantConstant;
-import com.keanntech.framework.auth.domain.Tenant;
-import com.keanntech.framework.auth.service.TenantService;
 import com.keanntech.framework.common.annotation.ApiVersion;
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;
+import com.keanntech.framework.tenant.constant.TenantConstant;
+import com.keanntech.framework.tenant.domain.Tenant;
+import com.keanntech.framework.tenant.service.TenantService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;

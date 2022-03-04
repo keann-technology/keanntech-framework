@@ -4,6 +4,7 @@ import com.keanntech.framework.security.domain.UserDetail;
 import com.keanntech.framework.security.utils.JwtUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -22,6 +23,7 @@ import java.io.IOException;
  * @date 2022年01月26日 8:28 上午
  */
 @Component
+@RefreshScope
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Value(value = "${jwt.header}")

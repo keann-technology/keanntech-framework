@@ -1,4 +1,4 @@
-package com.keanntech.framework.auth.domain;
+package com.keanntech.framework.tenant.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

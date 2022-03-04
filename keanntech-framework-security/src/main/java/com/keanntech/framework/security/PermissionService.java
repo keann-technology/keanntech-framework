@@ -5,6 +5,7 @@ import com.keanntech.framework.security.domain.UserDetail;
 import com.keanntech.framework.security.utils.JwtUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  * @date 2022年02月10日 3:38 下午
  */
 @Service("perms")
+@RefreshScope
 public class PermissionService {
 
     final JwtUtils jwtUtils;

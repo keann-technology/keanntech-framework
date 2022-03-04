@@ -4,6 +4,7 @@ import com.keanntech.framework.security.domain.UserDetail;
 import io.jsonwebtoken.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
  * @date 2022年01月26日 8:52 上午
  */
 @Component
+@RefreshScope
 public class JwtUtils {
 
     private static final String CLAIM_KEY_USER_ID = "userId";

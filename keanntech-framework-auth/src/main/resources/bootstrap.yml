@@ -6,9 +6,13 @@ spring:
   cloud:
     nacos:
       config:
-        namespace: 6447cbf4-fbd3-4e86-8ac7-f1190df7c197
-        prefix: ${spring.application.name}
-        server-addr: 39.101.166.110:8848
+        server-addr: ${spring.cloud.nacos.server-addr}
+        namespace: ${spring.cloud.nacos.namespace}
         file-extension: yaml
-        config-retry-time: 300000
         group: KEANN_AUTH
+        shared-configs[0]:
+          data-id: common-mysql-dev.yaml
+          group: KEANN_COMMON
+        shared-configs[1]:
+          data-id: common-dev.yaml
+          group: KEANN_COMMON

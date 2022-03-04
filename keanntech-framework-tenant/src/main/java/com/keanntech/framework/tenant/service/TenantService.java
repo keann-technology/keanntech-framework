@@ -1,6 +1,6 @@
-package com.keanntech.framework.auth.service;
+package com.keanntech.framework.tenant.service;
 
-import com.keanntech.framework.auth.domain.Tenant;
+import com.keanntech.framework.tenant.domain.Tenant;
 
 /**
  * @Author

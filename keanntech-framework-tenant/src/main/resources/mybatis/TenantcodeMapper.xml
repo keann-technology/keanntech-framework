@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.keanntech.framework.auth.mapper.TenantcodeMapper">
-  <resultMap id="BaseResultMap" type="com.keanntech.framework.auth.domain.Tenantcode">
+<mapper namespace="com.keanntech.framework.tenant.mapper.TenantcodeMapper">
+  <resultMap id="BaseResultMap" type="com.keanntech.framework.tenant.domain.Tenantcode">
     <!--@mbg.generated-->
     <!--@Table t_keann_tenantcode-->
     <id column="id" jdbcType="BIGINT" property="id" />
@@ -65,7 +65,7 @@
       (#{item.tenantCode,jdbcType=VARCHAR}, #{item.used,jdbcType=BOOLEAN})
     </foreach>
   </insert>
-  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.keanntech.framework.auth.domain.Tenantcode" useGeneratedKeys="true">
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.keanntech.framework.tenant.domain.Tenantcode" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into t_keann_tenantcode
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -92,7 +92,7 @@
       used = #{used,jdbcType=BOOLEAN},
     </trim>
   </insert>
-  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.keanntech.framework.auth.domain.Tenantcode" useGeneratedKeys="true">
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.keanntech.framework.tenant.domain.Tenantcode" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into t_keann_tenantcode
     <trim prefix="(" suffix=")" suffixOverrides=",">

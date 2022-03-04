@@ -1,10 +1,11 @@
-package com.keanntech.framework.auth.service.impl;
+package com.keanntech.framework.tenant.service.impl;
 
-import com.keanntech.framework.auth.domain.Tenant;
-import com.keanntech.framework.auth.domain.Tenantcode;
-import com.keanntech.framework.auth.mapper.TenantMapper;
-import com.keanntech.framework.auth.mapper.TenantcodeMapper;
-import com.keanntech.framework.auth.service.TenantService;
+
+import com.keanntech.framework.tenant.domain.Tenant;
+import com.keanntech.framework.tenant.domain.Tenantcode;
+import com.keanntech.framework.tenant.mapper.TenantMapper;
+import com.keanntech.framework.tenant.mapper.TenantcodeMapper;
+import com.keanntech.framework.tenant.service.TenantService;
 import com.sankuai.inf.leaf.service.SnowflakeService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;

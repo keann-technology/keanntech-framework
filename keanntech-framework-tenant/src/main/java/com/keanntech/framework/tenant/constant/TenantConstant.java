@@ -1,4 +1,4 @@
-package com.keanntech.framework.auth.constant;
+package com.keanntech.framework.tenant.constant;
 
 /**
  * @Author

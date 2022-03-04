@@ -1,4 +1,4 @@
-package com.keanntech.framework.auth.domain;
+package com.keanntech.framework.tenant.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -6,20 +6,19 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
     @Author
     @Create 2022-02-28 16:32:17
     @Desc ...
 */
-/**
-    * 租户CODE表 
-    */
+
 @ApiModel(value="租户CODE表 ")
 @Data
 @Builder

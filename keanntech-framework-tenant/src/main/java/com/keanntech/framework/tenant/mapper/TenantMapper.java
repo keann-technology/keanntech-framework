@@ -1,10 +1,11 @@
-package com.keanntech.framework.auth.mapper;
+package com.keanntech.framework.tenant.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.keanntech.framework.auth.domain.Tenant;
-import java.util.List;
+import com.keanntech.framework.tenant.domain.Tenant;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
     @Author

@@ -1,9 +1,9 @@
-package com.keanntech.framework.auth.mapper;
+package com.keanntech.framework.tenant.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.keanntech.framework.auth.domain.Tenantcode;
 import com.keanntech.framework.common.DataSourceKey;
 import com.keanntech.framework.common.annotation.DataSource;
+import com.keanntech.framework.tenant.domain.Tenantcode;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

@@ -161,11 +161,6 @@
                 <artifactId>spring-cloud-starter-bootstrap</artifactId>
                 <version>${spring-cloud-starter-bootstrap.version}</version>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.boot</groupId>-->
-<!--                <artifactId>nacos-config-spring-boot-actuator</artifactId>-->
-<!--                <version>${nacos-config-spring-boot.version}</version>-->
-<!--            </dependency>-->
             <dependency>
                 <groupId>org.xbib.elasticsearch</groupId>
                 <artifactId>noggit</artifactId>

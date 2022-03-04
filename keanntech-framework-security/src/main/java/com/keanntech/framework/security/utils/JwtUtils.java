@@ -1,9 +1,9 @@
 package com.keanntech.framework.security.utils;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.keanntech.framework.security.domain.UserDetail;
 import io.jsonwebtoken.*;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,13 +28,13 @@ public class JwtUtils {
     private final Map<Long, String> tokenMap = new HashMap<>();
     private final Map<Long, String> refreshTokenMap = new HashMap<>();
 
-    @NacosValue("${jwt.secret}")
+    @Value("${jwt.secret}")
     private String secret;
 
-    @NacosValue("${jwt.access-token-expiration}")
+    @Value("${jwt.access-token-expiration}")
     private Long accessTokenExpiration;
 
-    @NacosValue("${jwt.refresh-token-expiration}")
+    @Value("${jwt.refresh-token-expiration}")
     private Long refreshTokenExpiration;
 
     private final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;

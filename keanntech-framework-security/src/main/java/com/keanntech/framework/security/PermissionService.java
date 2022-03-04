@@ -1,10 +1,10 @@
 package com.keanntech.framework.security;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.keanntech.framework.common.utils.ServletUtils;
 import com.keanntech.framework.security.domain.UserDetail;
 import com.keanntech.framework.security.utils.JwtUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -19,7 +19,7 @@ public class PermissionService {
 
     final JwtUtils jwtUtils;
 
-    @NacosValue("${jwt.header}")
+    @Value("${jwt.header}")
     private String jwtHeader;
 
     public PermissionService(JwtUtils jwtUtils) {

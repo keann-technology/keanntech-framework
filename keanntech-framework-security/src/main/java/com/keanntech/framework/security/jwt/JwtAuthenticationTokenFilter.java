@@ -1,9 +1,9 @@
 package com.keanntech.framework.security.jwt;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.keanntech.framework.security.domain.UserDetail;
 import com.keanntech.framework.security.utils.JwtUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -24,10 +24,10 @@ import java.io.IOException;
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
-    @NacosValue(value = "${jwt.header}")
+    @Value(value = "${jwt.header}")
     private String jwtHeader;
 
-    @NacosValue("${jwt.tokenHead}")
+    @Value("${jwt.tokenHead}")
     private String tokenHead;
 
     @Resource

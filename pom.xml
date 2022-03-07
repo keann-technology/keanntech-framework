@@ -11,6 +11,7 @@
         <module>keanntech-framework-security</module>
         <module>keanntech-framework-auth</module>
         <module>keanntech-framework-tenant</module>
+        <module>keanntech-framework-portal</module>
     </modules>
 
     <parent>

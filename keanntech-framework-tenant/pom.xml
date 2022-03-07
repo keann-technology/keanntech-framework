@@ -32,10 +32,6 @@
         </dependency>
         <dependency>
             <groupId>com.keanntech.framework</groupId>
-            <artifactId>keanntech-framework-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.keanntech.framework</groupId>
             <artifactId>keanntech-framework-common</artifactId>
         </dependency>
     </dependencies>

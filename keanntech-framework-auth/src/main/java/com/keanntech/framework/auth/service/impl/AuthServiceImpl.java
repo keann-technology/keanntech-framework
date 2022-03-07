@@ -1,7 +1,7 @@
 package com.keanntech.framework.auth.service.impl;
 
 import com.keanntech.framework.auth.domain.vo.AdminUserVo;
-import com.keanntech.framework.auth.exception.CustomException;
+import com.keanntech.framework.common.exception.CustomException;
 import com.keanntech.framework.auth.service.AuthService;
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;

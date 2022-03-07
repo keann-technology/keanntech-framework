@@ -11,21 +11,53 @@ import java.util.List;
 
 /**
  * @Author
- * @Create 2022-03-01 10:35:25
+ * @Create 2022-03-04 16:31:25
  * @Desc ...
  */
+
 @Mapper
 public interface RoleMapper extends BaseMapper<Role> {
+
+    /**
+     * 批量更新
+     * @param list
+     * @return
+     */
     int updateBatch(List<Role> list);
 
+    /**
+     * 批量更新（值为空的不操作）
+     * @param list
+     * @return
+     */
     int updateBatchSelective(List<Role> list);
 
+    /**
+     * 批量插入
+     * @param list
+     * @return
+     */
     int batchInsert(@Param("list") List<Role> list);
 
+    /**
+     * 批量更新或插入
+     * @param record
+     * @return
+     */
     int insertOrUpdate(Role record);
 
+    /**
+     * 批量更新或插入
+     * @param record
+     * @return
+     */
     int insertOrUpdateSelective(Role record);
 
-    @DataSource(DataSourceKey.SLAVE)
+    /**
+     * 根据ID查找
+     * @param id
+     * @return
+     */
+    @DataSource(DataSourceKey.MASTER)
     Role findById(@Param("id") Long id);
 }

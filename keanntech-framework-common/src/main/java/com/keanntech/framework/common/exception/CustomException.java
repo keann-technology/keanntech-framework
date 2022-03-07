@@ -1,4 +1,4 @@
-package com.keanntech.framework.auth.exception;
+package com.keanntech.framework.common.exception;
 
 import com.keanntech.framework.common.web.ResultJson;
 import lombok.Getter;

@@ -7,6 +7,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="role_name" jdbcType="VARCHAR" property="roleName" />
     <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
+    <result column="tenant_code" jdbcType="VARCHAR" property="tenantCode" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="status" jdbcType="BOOLEAN" property="status" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
@@ -18,8 +19,8 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, role_name, role_code, description, `status`, sort, deleted, created_by, created_time, 
-    updated_by, updated_time
+    id, role_name, role_code, tenant_code, description, `status`, sort, deleted, created_by,
+    created_time, updated_by, updated_time
   </sql>
   <update id="updateBatch" parameterType="java.util.List">
     <!--@mbg.generated-->
@@ -33,6 +34,11 @@
       <trim prefix="role_code = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
           when id = #{item.id,jdbcType=BIGINT} then #{item.roleCode,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tenant_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.tenantCode,jdbcType=VARCHAR}
         </foreach>
       </trim>
       <trim prefix="description = case" suffix="end,">
@@ -50,7 +56,7 @@
           when id = #{item.id,jdbcType=BIGINT} then #{item.sort,jdbcType=INTEGER}
         </foreach>
       </trim>
-      <trim prefix="deleted = case" suffix="end,">
+      <trim prefix="del_flag = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
           when id = #{item.id,jdbcType=BIGINT} then #{item.deleted,jdbcType=BOOLEAN}
         </foreach>
@@ -99,6 +105,13 @@
           </if>
         </foreach>
       </trim>
+      <trim prefix="tenant_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.tenantCode != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.tenantCode,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
       <trim prefix="description = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
           <if test="item.description != null">
@@ -120,7 +133,7 @@
           </if>
         </foreach>
       </trim>
-      <trim prefix="deleted = case" suffix="end,">
+      <trim prefix="del_flag = case" suffix="end,">
         <foreach collection="list" index="index" item="item">
           <if test="item.deleted != null">
             when id = #{item.id,jdbcType=BIGINT} then #{item.deleted,jdbcType=BOOLEAN}
@@ -164,14 +177,14 @@
   <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into t_keann_role
-    (role_name, role_code, description, `status`, sort, deleted, created_by, created_time, 
-      updated_by, updated_time)
+    (role_name, role_code, tenant_code, description, `status`, sort, deleted, created_by,
+      created_time, updated_by, updated_time)
     values
     <foreach collection="list" item="item" separator=",">
-      (#{item.roleName,jdbcType=VARCHAR}, #{item.roleCode,jdbcType=VARCHAR}, #{item.description,jdbcType=VARCHAR}, 
-        #{item.status,jdbcType=BOOLEAN}, #{item.sort,jdbcType=INTEGER}, #{item.deleted,jdbcType=BOOLEAN}, 
-        #{item.createdBy,jdbcType=VARCHAR}, #{item.createdTime,jdbcType=TIMESTAMP}, #{item.updatedBy,jdbcType=VARCHAR}, 
-        #{item.updatedTime,jdbcType=TIMESTAMP})
+      (#{item.roleName,jdbcType=VARCHAR}, #{item.roleCode,jdbcType=VARCHAR}, #{item.tenantCode,jdbcType=VARCHAR}, 
+        #{item.description,jdbcType=VARCHAR}, #{item.status,jdbcType=BOOLEAN}, #{item.sort,jdbcType=INTEGER}, 
+        #{item.deleted,jdbcType=BOOLEAN}, #{item.createdBy,jdbcType=VARCHAR}, #{item.createdTime,jdbcType=TIMESTAMP},
+        #{item.updatedBy,jdbcType=VARCHAR}, #{item.updatedTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
   <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.keanntech.framework.auth.domain.Role" useGeneratedKeys="true">
@@ -183,6 +196,7 @@
       </if>
       role_name,
       role_code,
+      tenant_code,
       description,
       `status`,
       sort,
@@ -199,6 +213,7 @@
       </if>
       #{roleName,jdbcType=VARCHAR},
       #{roleCode,jdbcType=VARCHAR},
+      #{tenantCode,jdbcType=VARCHAR},
       #{description,jdbcType=VARCHAR},
       #{status,jdbcType=BOOLEAN},
       #{sort,jdbcType=INTEGER},
@@ -215,6 +230,7 @@
       </if>
       role_name = #{roleName,jdbcType=VARCHAR},
       role_code = #{roleCode,jdbcType=VARCHAR},
+      tenant_code = #{tenantCode,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       `status` = #{status,jdbcType=BOOLEAN},
       sort = #{sort,jdbcType=INTEGER},
@@ -237,6 +253,9 @@
       </if>
       <if test="roleCode != null">
         role_code,
+      </if>
+      <if test="tenantCode != null">
+        tenant_code,
       </if>
       <if test="description != null">
         description,
@@ -274,6 +293,9 @@
       <if test="roleCode != null">
         #{roleCode,jdbcType=VARCHAR},
       </if>
+      <if test="tenantCode != null">
+        #{tenantCode,jdbcType=VARCHAR},
+      </if>
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
@@ -309,6 +331,9 @@
       </if>
       <if test="roleCode != null">
         role_code = #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantCode != null">
+        tenant_code = #{tenantCode,jdbcType=VARCHAR},
       </if>
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},

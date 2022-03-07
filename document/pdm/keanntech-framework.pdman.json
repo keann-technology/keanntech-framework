@@ -2,191 +2,10 @@
   "modules": [
     {
       "name": "user",
-      "chnname": "用户、租户",
+      "chnname": "用户、租户、角色",
       "entities": [
         {
-          "title": "t_admin",
-          "fields": [
-            {
-              "name": "id",
-              "type": "BigInt",
-              "remark": "",
-              "chnname": "ID",
-              "pk": true,
-              "notNull": true,
-              "autoIncrement": true
-            },
-            {
-              "name": "user_name",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "用户名",
-              "notNull": true,
-              "defaultValue": ""
-            },
-            {
-              "name": "pass_word",
-              "type": "String-256",
-              "remark": "",
-              "chnname": "密码",
-              "notNull": true
-            },
-            {
-              "name": "head_portrait",
-              "type": "String-256",
-              "remark": "",
-              "chnname": "头像",
-              "defaultValue": "''"
-            },
-            {
-              "name": "email",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "邮箱",
-              "defaultValue": "''"
-            },
-            {
-              "name": "mobile",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "手机",
-              "defaultValue": "''"
-            },
-            {
-              "name": "nick_name",
-              "type": "DefaultString",
-              "remark": "",
-              "chnname": "昵称",
-              "defaultValue": "''"
-            },
-            {
-              "name": "expired",
-              "type": "tinyint(1)",
-              "remark": "1-过期0-未过期",
-              "chnname": "过期",
-              "defaultValue": "0"
-            },
-            {
-              "name": "locked",
-              "type": "tinyint(1)",
-              "remark": "1-锁定0-未锁定",
-              "chnname": "锁定",
-              "defaultValue": "0"
-            },
-            {
-              "name": "enabled",
-              "type": "tinyint(1)",
-              "remark": "1-启用0未启用",
-              "chnname": "状态",
-              "defaultValue": "1"
-            },
-            {
-              "name": "remark",
-              "type": "String-256",
-              "remark": "",
-              "chnname": "备注",
-              "defaultValue": "''"
-            },
-            {
-              "name": "super_admin",
-              "type": "tinyint(1)",
-              "remark": "1-是0-否",
-              "chnname": "是否超级管理员",
-              "defaultValue": "0"
-            },
-            {
-              "name": "del_flag",
-              "type": "tinyint(1)",
-              "remark": "1-删除0未删除",
-              "chnname": "删除",
-              "defaultValue": "0"
-            },
-            {
-              "name": "created_by",
-              "type": "IdOrKey",
-              "remark": "",
-              "chnname": "创建人",
-              "defaultValue": "''"
-            },
-            {
-              "name": "created_time",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "创建时间"
-            },
-            {
-              "name": "updated_by",
-              "type": "IdOrKey",
-              "remark": "",
-              "chnname": "更新人",
-              "defaultValue": "''"
-            },
-            {
-              "name": "updated_time",
-              "type": "DateTime",
-              "remark": "",
-              "chnname": "更新时间"
-            }
-          ],
-          "indexs": [
-            {
-              "name": "unique_username",
-              "isUnique": true,
-              "fields": [
-                "user_name"
-              ]
-            }
-          ],
-          "headers": [
-            {
-              "fieldName": "chnname",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "name",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "type",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "dataType",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "remark",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "pk",
-              "relationNoShow": false
-            },
-            {
-              "fieldName": "notNull",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "autoIncrement",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "defaultValue",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "relationNoShow",
-              "relationNoShow": true
-            },
-            {
-              "fieldName": "uiHint",
-              "relationNoShow": true
-            }
-          ],
-          "chnname": "后台用户"
-        },
-        {
-          "title": "t_admin_role",
+          "title": "t_keann_role",
           "fields": [
             {
               "name": "id",
@@ -212,18 +31,19 @@
               "notNull": true
             },
             {
+              "name": "tenant_code",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "租户CODE",
+              "defaultValue": "",
+              "notNull": true
+            },
+            {
               "name": "description",
               "type": "String-256",
               "remark": "",
               "chnname": "描述",
               "defaultValue": "''"
-            },
-            {
-              "name": "admin_count",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "后台用户数",
-              "defaultValue": "0"
             },
             {
               "name": "status",
@@ -331,7 +151,7 @@
           "chnname": "后台角色"
         },
         {
-          "title": "t_admin_role_relation",
+          "title": "t_keann_role_relation",
           "fields": [
             {
               "name": "id",
@@ -343,7 +163,7 @@
               "autoIncrement": true
             },
             {
-              "name": "admin_id",
+              "name": "user_id",
               "type": "BigInt",
               "remark": "",
               "chnname": "用户ID",

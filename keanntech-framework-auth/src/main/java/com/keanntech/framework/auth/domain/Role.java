@@ -16,7 +16,7 @@ import java.util.Date;
 
 /**
     @Author
-    @Create 2022-03-01 10:35:25
+    @Create 2022-03-04 16:31:25
     @Desc ...
 */
 
@@ -49,6 +49,13 @@ public class Role implements Serializable {
     private String roleCode;
 
     /**
+     * 租户CODE
+     */
+    @TableField(value = "tenant_code")
+    @ApiModelProperty(value = "租户CODE")
+    private String tenantCode;
+
+    /**
      * 描述
      */
     @TableField(value = "description")
@@ -56,10 +63,10 @@ public class Role implements Serializable {
     private String description;
 
     /**
-     * 状态 0-启用 1-禁用
+     * 状态 0-启用1-禁用
      */
     @TableField(value = "`status`")
-    @ApiModelProperty(value = "状态 0-启用 1-禁用")
+    @ApiModelProperty(value = "状态 0-启用1-禁用")
     private Boolean status;
 
     /**
@@ -70,10 +77,10 @@ public class Role implements Serializable {
     private Integer sort;
 
     /**
-     * 删除标识 0-未删除 1-删除
+     * 删除标识 0-未删除1-删除
      */
-    @TableField(value = "deleted")
-    @ApiModelProperty(value = "删除标识 0-未删除 1-删除")
+    @TableField(value = "del_flag")
+    @ApiModelProperty(value = "删除标识 0-未删除1-删除")
     private Boolean deleted;
 
     /**

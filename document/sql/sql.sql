@@ -1,22 +1,4 @@
-CREATE TABLE t_keann_0Mf170_role
-(
-    id           BIGINT      NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    role_name    VARCHAR(32) NOT NULL COMMENT '角色名',
-    role_code    VARCHAR(32) NOT NULL COMMENT '角色编码',
-    description  VARCHAR(256) DEFAULT '' COMMENT '描述',
-    status       tinyint(1)   DEFAULT 0 COMMENT '状态 0-启用 1-禁用',
-    sort         INT          DEFAULT 1 COMMENT '排序',
-    deleted      tinyint(1)   DEFAULT 0 COMMENT '删除标识 0-未删除 1-删除',
-    created_by   VARCHAR(32)  DEFAULT '' COMMENT '创建人',
-    created_time DATETIME COMMENT '创建时间',
-    updated_by   VARCHAR(32)  DEFAULT '' COMMENT '更新人',
-    updated_time DATETIME COMMENT '更新时间',
-    PRIMARY KEY (id)
-) COMMENT = '后台角色 ';
-ALTER TABLE t_keann_0Mf170_role
-    ADD UNIQUE unique_role (role_code, role_name);
-
-CREATE TABLE t_keann_0Mf170_role_relation
+CREATE TABLE t_keann_role_relation
 (
     id           BIGINT NOT NULL AUTO_INCREMENT COMMENT 'ID',
     user_id      BIGINT NOT NULL COMMENT '用户ID',
@@ -27,10 +9,29 @@ CREATE TABLE t_keann_0Mf170_role_relation
     updated_by   VARCHAR(32) DEFAULT '' COMMENT '更新人',
     updated_time DATETIME COMMENT '更新时间',
     PRIMARY KEY (id)
-) COMMENT = '后台用户、角色关系';
+) COMMENT = '用户、角色关系';
 
--- 以下不需要加租户CODE
-CREATE TABLE t_keann_000000_tenant
+
+CREATE TABLE t_keann_role
+(
+    id           BIGINT      NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    role_name    VARCHAR(32) NOT NULL COMMENT '角色名',
+    role_code    VARCHAR(32) NOT NULL COMMENT '角色编码',
+    tenant_code  VARCHAR(32) NOT NULL COMMENT '租户CODE',
+    description  VARCHAR(256) DEFAULT '' COMMENT '描述',
+    status       tinyint(1)   DEFAULT 0 COMMENT '状态 0-启用1-禁用',
+    sort         INT          DEFAULT 1 COMMENT '排序',
+    del_flag     tinyint(1)   DEFAULT 0 COMMENT '删除标识 0-未删除1-删除',
+    created_by   VARCHAR(32)  DEFAULT '' COMMENT '创建人',
+    created_time DATETIME COMMENT '创建时间',
+    updated_by   VARCHAR(32)  DEFAULT '' COMMENT '更新人',
+    updated_time DATETIME COMMENT '更新时间',
+    PRIMARY KEY (id)
+) COMMENT = '后台角色 ';
+ALTER TABLE t_keann_role
+    ADD UNIQUE unique_role (role_code, role_name);
+
+CREATE TABLE t_keann_tenant
 (
     id           BIGINT      NOT NULL COMMENT 'ID',
     tenant_name  VARCHAR(32) NOT NULL COMMENT '租户名称',
@@ -48,9 +49,9 @@ CREATE TABLE t_keann_000000_tenant
     update_time  DATETIME COMMENT '更新时间',
     PRIMARY KEY (id)
 ) COMMENT = '租户表';
-ALTER TABLE t_keann_000000_tenant ADD UNIQUE unique_code (tenant_code);
+ALTER TABLE t_keann_tenant ADD UNIQUE unique_code (tenant_code);
 
-CREATE TABLE t_keann_000000_admin
+CREATE TABLE t_keann_admin
 (
     id            BIGINT       NOT NULL COMMENT 'ID',
     tenant_code   VARCHAR(32)  NOT NULL COMMENT '租户CODE',
@@ -72,13 +73,13 @@ CREATE TABLE t_keann_000000_admin
     updated_time  DATETIME COMMENT '更新时间',
     PRIMARY KEY (id)
 ) COMMENT = '管理用户 ';
-ALTER TABLE t_keann_000000_admin ADD UNIQUE unique_name(user_name);
+ALTER TABLE t_keann_admin ADD UNIQUE unique_name(user_name);
 
-CREATE TABLE t_keann_000000_tenantcode
+CREATE TABLE t_keann_tenantcode
 (
     id          BIGINT      NOT NULL COMMENT 'ID',
     tenant_code VARCHAR(32) NOT NULL COMMENT '租户CODE',
     used        tinyint(1)  NOT NULL DEFAULT 0 COMMENT '是否使用 0-未使用1使用',
     PRIMARY KEY (id)
 ) COMMENT = '租户CODE表 ';
-ALTER TABLE t_keann_000000_tenantcode ADD UNIQUE unique_code(tenant_code);
+ALTER TABLE t_keann_tenantcode ADD UNIQUE unique_code(tenant_code);

@@ -6,8 +6,6 @@ import com.keanntech.framework.auth.mapper.RoleMapper;
 import com.keanntech.framework.auth.mapper.RoleRelationMapper;
 import com.keanntech.framework.security.domain.UserDetail;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,11 +25,7 @@ import java.util.stream.Collectors;
  */
 @Component(value = "customUserDetailsService")
 @NoArgsConstructor
-@RefreshScope
 public class CustomUserDetailsService implements UserDetailsService {
-
-    @Value("${keanntech.default-tenant-code}")
-    private String defaultTenantCode;
 
     @Resource
     private AdminMapper adminMapper;
@@ -49,7 +43,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(String.format("No user found with username '%s'.", name));
         }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        if (admin.getTenantCode().equals(defaultTenantCode)) {
+        if (admin.getAdminType().equals(0)) {
             grantedAuthorities.add(new SimpleGrantedAuthority("*"));
         } else {
             grantedAuthorities = roleRelationMapper.findRoleByUserId(admin.getId()).stream()

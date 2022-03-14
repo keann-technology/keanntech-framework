@@ -12,6 +12,9 @@
         <module>keanntech-framework-auth</module>
         <module>keanntech-framework-tenant</module>
         <module>keanntech-framework-portal</module>
+        <module>keanntech-framework-datasource</module>
+        <module>keanntech-framework-entity</module>
+        <module>keanntech-framework-annotation</module>
     </modules>
 
     <parent>

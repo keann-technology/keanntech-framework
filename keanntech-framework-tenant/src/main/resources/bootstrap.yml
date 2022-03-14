@@ -1,3 +1,4 @@
+
 spring:
   profiles:
     active: dev
@@ -16,3 +17,10 @@ spring:
         shared-configs[1]:
           data-id: common-dev.yaml
           group: KEANN_COMMON
+      discovery:
+        server-addr: ${spring.cloud.nacos.server-addr}
+        namespace: ${spring.cloud.nacos.namespace}
+        group: KEANN_TENANT
+        cluster-name: tenantServer
+server:
+  port: 8081

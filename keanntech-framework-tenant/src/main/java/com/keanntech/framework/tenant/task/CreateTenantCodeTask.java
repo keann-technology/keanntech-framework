@@ -1,8 +1,8 @@
 package com.keanntech.framework.tenant.task;
 
 import com.keanntech.framework.common.utils.RandomStringUtil;
-import com.keanntech.framework.tenant.domain.Tenantcode;
-import com.keanntech.framework.tenant.mapper.TenantcodeMapper;
+import com.keanntech.framework.entity.domain.Tenantcode;
+import com.keanntech.framework.entity.mapper.tenant.TenantcodeMapper;
 import com.sankuai.inf.leaf.service.SnowflakeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

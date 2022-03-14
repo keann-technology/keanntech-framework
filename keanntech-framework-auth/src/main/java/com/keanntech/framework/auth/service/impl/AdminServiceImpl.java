@@ -1,8 +1,8 @@
 package com.keanntech.framework.auth.service.impl;
 
-import com.keanntech.framework.auth.domain.Admin;
-import com.keanntech.framework.auth.mapper.AdminMapper;
 import com.keanntech.framework.auth.service.AdminService;
+import com.keanntech.framework.entity.domain.Admin;
+import com.keanntech.framework.entity.mapper.auth.AdminMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

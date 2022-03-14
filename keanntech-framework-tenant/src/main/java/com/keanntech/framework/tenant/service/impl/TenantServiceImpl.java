@@ -1,10 +1,8 @@
 package com.keanntech.framework.tenant.service.impl;
 
 
-import com.keanntech.framework.tenant.domain.Tenant;
-import com.keanntech.framework.tenant.domain.Tenantcode;
-import com.keanntech.framework.tenant.mapper.TenantMapper;
-import com.keanntech.framework.tenant.mapper.TenantcodeMapper;
+import com.keanntech.framework.entity.mapper.tenant.TenantMapper;
+import com.keanntech.framework.entity.mapper.tenant.TenantcodeMapper;
 import com.keanntech.framework.tenant.service.TenantService;
 import com.sankuai.inf.leaf.service.SnowflakeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,19 +30,20 @@ public class TenantServiceImpl implements TenantService {
     }
 
     @Override
-    public int regTenant(Tenant tenant) {
-        tenant.setId(snowflakeService.getId("id").getId());
-        Tenantcode tenantcode = tenantcodeMapper.getUnusedTenantCode();
-        tenant.setTenantCode(tenantcode.getTenantCode());
-        return transactionTemplate.execute(status -> {
-            try {
-                tenantcode.setUsed(true);
-                tenantcodeMapper.updateById(tenantcode);
-                return tenantMapper.insert(tenant);
-            } catch (Exception e) {
-                status.setRollbackOnly();
-                return  -1;
-            }
-        });
+    public int regTenant() {
+        return -99;
+//        tenant.setId(snowflakeService.getId("id").getId());
+//        Tenantcode tenantcode = tenantcodeMapper.getUnusedTenantCode();
+//        tenant.setTenantCode(tenantcode.getTenantCode());
+//        return transactionTemplate.execute(status -> {
+//            try {
+//                tenantcode.setUsed(true);
+//                tenantcodeMapper.updateById(tenantcode);
+//                return tenantMapper.insert(tenant);
+//            } catch (Exception e) {
+//                status.setRollbackOnly();
+//                return  -1;
+//            }
+//        });
     }
 }

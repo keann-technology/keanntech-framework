@@ -1,6 +1,6 @@
 package com.keanntech.framework.auth.service;
 
-import com.keanntech.framework.auth.domain.Admin;
+import com.keanntech.framework.entity.domain.Admin;
 
 /**
  * @Author

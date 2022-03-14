@@ -1,7 +1,5 @@
 package com.keanntech.framework.tenant.service;
 
-import com.keanntech.framework.tenant.domain.Tenant;
-
 /**
  * @Author
  * @Create 2022-03-01 08:17:28
@@ -11,9 +9,8 @@ public interface TenantService {
 
     /**
      * 注册租户
-     * @param tenant
      * @return
      */
-    int regTenant(Tenant tenant);
+    int regTenant();
 
 }

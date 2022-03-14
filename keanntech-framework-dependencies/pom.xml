@@ -27,6 +27,7 @@
         <jjwt.version>0.9.1</jjwt.version>
         <web.starter.version>2.6.3</web.starter.version>
         <aop.starter.version>2.6.3</aop.starter.version>
+        <jdbc.starter.version>2.6.3</jdbc.starter.version>
         <security.starter.version>2.6.3</security.starter.version>
         <pagehelper.version>1.4.1</pagehelper.version>
         <druid.version>1.2.8</druid.version>
@@ -37,6 +38,10 @@
         <spring.security.jwt.version>1.1.1.RELEASE</spring.security.jwt.version>
         <kf.security.version>1.0-SNAPSHOT</kf.security.version>
         <kf.common.version>1.0-SNAPSHOT</kf.common.version>
+        <kf.datasource.version>1.0-SNAPSHOT</kf.datasource.version>
+        <kf.entity.version>1.0-SNAPSHOT</kf.entity.version>
+        <kf.annotation.version>1.0-SNAPSHOT</kf.annotation.version>
+        <mybatis.annotation.version>3.5.1</mybatis.annotation.version>
         <noggit.version>6.3.2.1</noggit.version>
         <jaxb.version>3.0.1</jaxb.version>
         <jaxb.api.version>2.3.1</jaxb.api.version>
@@ -45,8 +50,10 @@
         <swagger.bootstrap.ui.version>1.9.6</swagger.bootstrap.ui.version>
         <leaf.version>1.0.1-RELEASE</leaf.version>
         <curator.version>5.1.0</curator.version>
-        <nacos-config-spring-boot.version>2.2.3.RELEASE</nacos-config-spring-boot.version>
-        <spring-cloud-starter-bootstrap.version>3.1.1</spring-cloud-starter-bootstrap.version>
+        <nacos.config.spring.boot.version>2.2.3.RELEASE</nacos.config.spring.boot.version>
+        <openfeign.starter.version>2.2.4.RELEASE</openfeign.starter.version>
+        <loadbalancer.starter.version>2.2.2.RELEASE</loadbalancer.starter.version>
+        <spring.cloud.starter.bootstrap.version>3.1.1</spring.cloud.starter.bootstrap.version>
     </properties>
 
     <dependencies>
@@ -96,6 +103,11 @@
                 <version>${mybatis.starter.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis.annotation.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
@@ -142,6 +154,21 @@
                 <version>${kf.common.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.keanntech.framework</groupId>
+                <artifactId>keanntech-framework-annotation</artifactId>
+                <version>${kf.annotation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.keanntech.framework</groupId>
+                <artifactId>keanntech-framework-datasource</artifactId>
+                <version>${kf.datasource.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.keanntech.framework</groupId>
+                <artifactId>keanntech-framework-entity</artifactId>
+                <version>${kf.entity.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.version}</version>
@@ -154,12 +181,32 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-                <version>${nacos-config-spring-boot.version}</version>
+                <version>${nacos.config.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${nacos.config.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${openfeign.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${loadbalancer.starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-bootstrap</artifactId>
-                <version>${spring-cloud-starter-bootstrap.version}</version>
+                <version>${spring.cloud.starter.bootstrap.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>${jdbc-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.xbib.elasticsearch</groupId>

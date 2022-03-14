@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: portal
+  cloud:
+    nacos:
+      config:
+        server-addr: ${spring.cloud.nacos.server-addr}
+        namespace: ${spring.cloud.nacos.namespace}
+        file-extension: yaml
+        group: KEANN_PORTAL
+        shared-configs:
+          - data-id: common-dev.yaml
+            group: KEANN_COMMON
+          - data-id: common-mysql-dev.yaml
+            group: KEANN_COMMON

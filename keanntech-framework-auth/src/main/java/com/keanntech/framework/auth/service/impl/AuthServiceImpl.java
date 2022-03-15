@@ -1,10 +1,10 @@
-package com.keanntech.framework.portal.service.impl;
+package com.keanntech.framework.auth.service.impl;
 
+import com.keanntech.framework.auth.service.AuthService;
 import com.keanntech.framework.common.exception.CustomException;
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;
 import com.keanntech.framework.entity.domain.vo.AdminUserVo;
-import com.keanntech.framework.portal.service.AuthService;
 import com.keanntech.framework.security.domain.UserDetail;
 import com.keanntech.framework.security.utils.JwtUtils;
 import org.springframework.security.authentication.AuthenticationManager;

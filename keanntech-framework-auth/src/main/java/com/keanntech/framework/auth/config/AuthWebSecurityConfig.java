@@ -1,4 +1,4 @@
-package com.keanntech.framework.portal.config;
+package com.keanntech.framework.auth.config;
 
 import com.keanntech.framework.security.CustomPasswordEncoder;
 import com.keanntech.framework.security.config.WebSecurityConfig;
@@ -12,10 +12,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * @author miaoqingfu
- * @date 2022年03月07日 11:17 AM
+ * @date 2022年03月15日 10:30 AM
  */
+
 @Configuration
-public class PortalWebSecurityConfig extends WebSecurityConfig {
+public class AuthWebSecurityConfig extends WebSecurityConfig {
 
     private UserDetailsService userDetailsService;
 

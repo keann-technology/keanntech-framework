@@ -1,4 +1,4 @@
-package com.keanntech.framework.portal.service;
+package com.keanntech.framework.auth.service;
 
 import com.keanntech.framework.entity.domain.Admin;
 import com.keanntech.framework.entity.mapper.auth.AdminMapper;

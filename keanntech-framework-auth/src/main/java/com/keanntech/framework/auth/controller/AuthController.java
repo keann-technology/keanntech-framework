@@ -1,11 +1,11 @@
-package com.keanntech.framework.portal.controller.auth;
+package com.keanntech.framework.auth.controller;
 
+import com.keanntech.framework.auth.service.AuthService;
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;
 import com.keanntech.framework.entity.domain.dto.LoginAdminDto;
 import com.keanntech.framework.entity.domain.dto.RegAdminDto;
 import com.keanntech.framework.entity.domain.vo.AdminUserVo;
-import com.keanntech.framework.portal.service.AuthService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
         scanBasePackages = {"com.keanntech.framework"},
         exclude = DataSourceAutoConfiguration.class
 )
-@MapperScan(basePackages = {"com.keanntech.framework.auth.mapper"})
+@MapperScan(basePackages = "com.keanntech.framework.*.mapper.*")
 @EnableLeafServer
 public class AuthApplication {
 

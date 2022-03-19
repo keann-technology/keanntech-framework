@@ -2,17 +2,14 @@ spring:
   profiles:
     active: dev
   application:
-    name: authorization-server
+    name: gateway
   cloud:
     nacos:
       config:
         server-addr: ${spring.cloud.nacos.server-addr}
         namespace: ${spring.cloud.nacos.namespace}
         file-extension: yaml
-        group: KEANN_AUTH
+        group: KEANN_GATEWAY
         shared-configs[0]:
-          data-id: common-mysql-dev.yaml
-          group: KEANN_COMMON
-        shared-configs[1]:
           data-id: common-dev.yaml
           group: KEANN_COMMON

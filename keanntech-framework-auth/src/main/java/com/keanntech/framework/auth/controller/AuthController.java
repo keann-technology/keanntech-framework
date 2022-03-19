@@ -35,7 +35,6 @@ public class AuthController {
             final AdminUserVo adminUserVo = authService.login(admin.getUserName(), admin.getPassWord());
             return ResultJson.ok(adminUserVo);
         } catch (Exception e) {
-            e.printStackTrace();
             return ResultJson.failure(ResultCode.LOGIN_ERROR);
         }
     }

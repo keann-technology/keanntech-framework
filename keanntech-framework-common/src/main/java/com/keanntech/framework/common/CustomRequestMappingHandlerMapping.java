@@ -1,6 +1,7 @@
 package com.keanntech.framework.common;
 
-import com.keanntech.framework.common.annotation.ApiVersion;
+import com.keanntech.framework.annotation.ApiVersion;
+import com.keanntech.framework.annotation.ApiVersionCondition;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;

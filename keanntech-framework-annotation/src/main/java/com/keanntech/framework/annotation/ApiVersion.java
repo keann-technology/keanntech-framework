@@ -1,4 +1,4 @@
-package com.keanntech.framework.common.annotation;
+package com.keanntech.framework.annotation;
 
 import org.springframework.web.bind.annotation.Mapping;
 

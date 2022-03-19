@@ -1,4 +1,4 @@
-package com.keanntech.framework.common;
+package com.keanntech.framework.annotation;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;

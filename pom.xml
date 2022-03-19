@@ -14,6 +14,8 @@
         <module>keanntech-framework-datasource</module>
         <module>keanntech-framework-entity</module>
         <module>keanntech-framework-annotation</module>
+        <module>keanntech-framework-admin</module>
+        <module>keanntech-framework-admin-api</module>
     </modules>
 
     <parent>

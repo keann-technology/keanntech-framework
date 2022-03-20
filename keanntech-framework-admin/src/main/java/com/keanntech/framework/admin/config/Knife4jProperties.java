@@ -1,4 +1,4 @@
-package com.keanntech.framework.auth.config;
+package com.keanntech.framework.admin.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

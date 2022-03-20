@@ -1,4 +1,4 @@
-package com.keanntech.framework.entity.mapper.auth;
+package com.keanntech.framework.admin.mapper.admin;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.keanntech.framework.annotation.datasource.DataSource;

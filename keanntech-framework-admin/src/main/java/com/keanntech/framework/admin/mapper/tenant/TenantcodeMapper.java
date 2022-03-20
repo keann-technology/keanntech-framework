@@ -1,4 +1,4 @@
-package com.keanntech.framework.entity.mapper.tenant;
+package com.keanntech.framework.admin.mapper.tenant;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.keanntech.framework.annotation.datasource.DataSource;

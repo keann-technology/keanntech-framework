@@ -34,6 +34,7 @@
         <common.lang3.version>3.12.0</common.lang3.version>
         <mybatis.plus.version>3.5.1</mybatis.plus.version>
         <swagger3.version>3.0.0</swagger3.version>
+        <swagger.annotations.version>1.6.0</swagger.annotations.version>
         <knife4j.version>3.0.3</knife4j.version>
         <spring.security.jwt.version>1.1.1.RELEASE</spring.security.jwt.version>
         <kf.security.version>1.0-SNAPSHOT</kf.security.version>
@@ -41,6 +42,7 @@
         <kf.datasource.version>1.0-SNAPSHOT</kf.datasource.version>
         <kf.entity.version>1.0-SNAPSHOT</kf.entity.version>
         <kf.annotation.version>1.0-SNAPSHOT</kf.annotation.version>
+        <kf.adminapi.version>1.0-SNAPSHOT</kf.adminapi.version>
         <mybatis.annotation.version>3.5.1</mybatis.annotation.version>
         <noggit.version>6.3.2.1</noggit.version>
         <jaxb.version>3.0.1</jaxb.version>
@@ -155,6 +157,11 @@
             </dependency>
             <dependency>
                 <groupId>com.keanntech.framework</groupId>
+                <artifactId>keanntech-framework-admin-api</artifactId>
+                <version>${kf.adminapi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.keanntech.framework</groupId>
                 <artifactId>keanntech-framework-common</artifactId>
                 <version>${kf.common.version}</version>
             </dependency>
@@ -182,6 +189,11 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.annotations.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>

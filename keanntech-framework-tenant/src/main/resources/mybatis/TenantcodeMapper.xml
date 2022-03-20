@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.keanntech.framework.entity.mapper.tenant.TenantcodeMapper">
+<mapper namespace="com.keanntech.framework.admin.mapper.tenant.TenantcodeMapper">
   <resultMap id="BaseResultMap" type="com.keanntech.framework.entity.domain.Tenantcode">
     <!--@mbg.generated-->
     <!--@Table t_keann_tenantcode-->

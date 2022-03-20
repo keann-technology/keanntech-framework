@@ -1,4 +1,4 @@
-package com.keanntech.framework.auth.config;
+package com.keanntech.framework.admin.config;
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.boot.SpringBootVersion;
@@ -44,7 +44,7 @@ public class Knife4jConfig {
     public Docket authRestApi() {
         return new Docket(DocumentationType.OAS_30)
                 .pathMapping("/")
-                .groupName("权限认证服务")
+                .groupName("管理端服务")
                 //定义是否开启swagger，false为关闭，可以通过变量控制
                 .enable(knife4jProperties.getEnable())
                 //将api的元信息设置为包含在json ResourceListing响应中。
@@ -54,7 +54,7 @@ public class Knife4jConfig {
                 //选择哪些接口作为swagger的doc发布
                 .select()
                 //表示任何包
-                .apis(RequestHandlerSelectors.basePackage("com.keanntech.framework.auth"))
+                .apis(RequestHandlerSelectors.basePackage("com.keanntech.framework.admin"))
                 .paths(PathSelectors.any())
                 .build()
                 // 支持的通讯协议集合
@@ -67,7 +67,7 @@ public class Knife4jConfig {
 
     private ApiInfo authApiInfo() {
         return new ApiInfoBuilder()
-                .title("权限认证服务")
+                .title("管理端服务")
                 .description(knife4jProperties.getApplicationDescription())
                 .termsOfServiceUrl(knife4jProperties.getTryHost())
                 .contact(new Contact("keanntech", knife4jProperties.getTryHost(), "keanntech@aliyun.com"))

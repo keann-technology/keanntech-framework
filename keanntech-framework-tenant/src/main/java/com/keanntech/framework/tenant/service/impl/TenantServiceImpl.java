@@ -1,13 +1,8 @@
 package com.keanntech.framework.tenant.service.impl;
 
 
-import com.keanntech.framework.entity.mapper.tenant.TenantMapper;
-import com.keanntech.framework.entity.mapper.tenant.TenantcodeMapper;
 import com.keanntech.framework.tenant.service.TenantService;
-import com.sankuai.inf.leaf.service.SnowflakeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.support.TransactionTemplate;
 
 /**
  * @author miaoqingfu
@@ -16,18 +11,18 @@ import org.springframework.transaction.support.TransactionTemplate;
 @Service
 public class TenantServiceImpl implements TenantService {
 
-    final TenantMapper tenantMapper;
-    final TenantcodeMapper tenantcodeMapper;
-    final SnowflakeService snowflakeService;
-    final TransactionTemplate transactionTemplate;
-
-    @Autowired
-    public TenantServiceImpl(TenantMapper tenantMapper, TenantcodeMapper tenantcodeMapper, SnowflakeService snowflakeService, TransactionTemplate transactionTemplate) {
-        this.tenantMapper = tenantMapper;
-        this.tenantcodeMapper = tenantcodeMapper;
-        this.snowflakeService = snowflakeService;
-        this.transactionTemplate = transactionTemplate;
-    }
+//    final TenantMapper tenantMapper;
+//    final TenantcodeMapper tenantcodeMapper;
+//    final SnowflakeService snowflakeService;
+//    final TransactionTemplate transactionTemplate;
+//
+//    @Autowired
+//    public TenantServiceImpl(TenantMapper tenantMapper, TenantcodeMapper tenantcodeMapper, SnowflakeService snowflakeService, TransactionTemplate transactionTemplate) {
+//        this.tenantMapper = tenantMapper;
+//        this.tenantcodeMapper = tenantcodeMapper;
+//        this.snowflakeService = snowflakeService;
+//        this.transactionTemplate = transactionTemplate;
+//    }
 
     @Override
     public int regTenant() {

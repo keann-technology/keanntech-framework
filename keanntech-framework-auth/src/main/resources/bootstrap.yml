@@ -10,9 +10,9 @@ spring:
         namespace: ${spring.cloud.nacos.namespace}
         file-extension: yaml
         group: KEANN_AUTH
-        shared-configs[0]:
-          data-id: common-dev.yaml
-          group: KEANN_COMMON
+        shared-configs:
+          - data-id: common-dev.yaml
+            group: KEANN_COMMON
       discovery:
         server-addr: ${spring.cloud.nacos.server-addr}
         namespace: ${spring.cloud.nacos.namespace}

@@ -53,7 +53,6 @@ public class Knife4jConfig {
                 .host(knife4jProperties.getTryHost())
                 //选择哪些接口作为swagger的doc发布
                 .select()
-                //表示任何包
                 .apis(RequestHandlerSelectors.basePackage("com.keanntech.framework.admin"))
                 .paths(PathSelectors.any())
                 .build()

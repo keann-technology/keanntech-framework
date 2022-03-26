@@ -20,6 +20,12 @@
         <dependency>
             <groupId>com.keanntech.framework</groupId>
             <artifactId>keanntech-framework-security</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jsr305</artifactId>
+                    <groupId>com.google.code.findbugs</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.keanntech.framework</groupId>
@@ -28,6 +34,12 @@
         <dependency>
             <groupId>com.keanntech.framework</groupId>
             <artifactId>keanntech-framework-admin-api</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>archaius-core</artifactId>
+                    <groupId>com.netflix.archaius</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -44,12 +56,12 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
             <exclusions>
                 <exclusion>
-                    <artifactId>archaius-core</artifactId>
-                    <groupId>com.netflix.archaius</groupId>
-                </exclusion>
-                <exclusion>
                     <artifactId>guava</artifactId>
                     <groupId>com.google.guava</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>hystrix-core</artifactId>
+                    <groupId>com.netflix.hystrix</groupId>
                 </exclusion>
                 <exclusion>
                     <artifactId>servo-core</artifactId>

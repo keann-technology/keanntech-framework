@@ -1,15 +1,11 @@
 spring:
   profiles:
     active: dev
-  application:
-    name: gateway-server
   cloud:
     nacos:
       config:
         server-addr: ${spring.cloud.nacos.server-addr}
         namespace: ${spring.cloud.nacos.namespace}
         file-extension: yaml
-        group: KEANN_GATEWAY
-        shared-configs[0]:
-          data-id: common-dev.yaml
-          group: KEANN_COMMON
+        prefix: datasource-dev
+        group: KEANN_DATASOURCE

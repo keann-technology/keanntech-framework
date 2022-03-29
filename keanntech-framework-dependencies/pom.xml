@@ -2,16 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<!--    <parent>-->
-<!--        <artifactId>spring-boot-dependencies</artifactId>-->
-<!--        <groupId>org.springframework.boot</groupId>-->
-<!--        <version>2.6.3</version>-->
-<!--        <relativePath/>-->
-<!--    </parent>-->
         <parent>
             <artifactId>spring-boot-starter-parent</artifactId>
             <groupId>org.springframework.boot</groupId>
-            <version>2.6.3</version>
+            <version>2.6.5</version>
             <relativePath/>
         </parent>
 
@@ -28,13 +22,13 @@
         <java.version>11</java.version>
 
         <mybatis.starter.version>2.2.2</mybatis.starter.version>
-        <hutool.version>5.7.20</hutool.version>
+        <hutool.version>5.7.22</hutool.version>
         <snakeyaml.version>1.29</snakeyaml.version>
         <jjwt.version>0.9.1</jjwt.version>
-        <web.starter.version>2.6.3</web.starter.version>
-        <aop.starter.version>2.6.3</aop.starter.version>
-        <jdbc.starter.version>2.6.3</jdbc.starter.version>
-        <security.starter.version>2.6.3</security.starter.version>
+        <web.starter.version>2.6.5</web.starter.version>
+        <aop.starter.version>2.6.5</aop.starter.version>
+        <jdbc.starter.version>2.6.5</jdbc.starter.version>
+        <security.starter.version>2.6.5</security.starter.version>
         <pagehelper.version>1.4.1</pagehelper.version>
         <druid.version>1.2.8</druid.version>
         <common.lang3.version>3.12.0</common.lang3.version>
@@ -57,7 +51,7 @@
         <config.processor.version>2.3.7.RELEASE</config.processor.version>
         <swagger.bootstrap.ui.version>1.9.6</swagger.bootstrap.ui.version>
         <leaf.version>1.0.1-RELEASE</leaf.version>
-        <curator.version>5.1.0</curator.version>
+        <curator.version>5.2.1</curator.version>
         <nacos.config.spring.boot.version>2.2.3.RELEASE</nacos.config.spring.boot.version>
         <openfeign.starter.version>2.2.4.RELEASE</openfeign.starter.version>
         <loadbalancer.starter.version>2.2.2.RELEASE</loadbalancer.starter.version>

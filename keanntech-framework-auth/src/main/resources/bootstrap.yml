@@ -11,7 +11,7 @@ spring:
         file-extension: yaml
         group: KEANN_AUTH
         shared-configs:
-          - data-id: common-dev.yaml
+          - data-id: common-${spring.profiles.active}.yaml
             group: KEANN_COMMON
       discovery:
         server-addr: ${spring.cloud.nacos.server-addr}

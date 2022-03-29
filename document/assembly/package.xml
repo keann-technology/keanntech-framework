@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+    <id>full</id>
+
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <dependencySets>
+        <dependencySet>
+            <!--不使用项目的artifact，第三方jar不要解压，打包进lib目录-->
+            <useProjectArtifact>false</useProjectArtifact>
+
+            <!-- 第三方jar打包进Zip文件的lib目录下， -->
+            <!-- 注意此目录要与maven-jar-plugin中classpathPrefix指定的目录相同, -->
+            <!-- 不然这些依赖的jar包加载到ClassPath的时候会找不到-->
+            <outputDirectory>lib</outputDirectory>
+
+            <!-- 第三方jar不要解压-->
+            <!--<unpack>false</unpack>-->
+        </dependencySet>
+    </dependencySets>
+    <fileSets>
+        <fileSet>
+            <directory>target/classes</directory>
+            <outputDirectory>/</outputDirectory>
+            <excludes>
+                <exclude>*.tar.gz</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+</assembly>

@@ -12,7 +12,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication(
         scanBasePackages = {"com.keanntech.framework"},
-        exclude = DataSourceAutoConfiguration.class
+        exclude = { DataSourceAutoConfiguration.class }
 )
 @MapperScan(basePackages = "com.keanntech.framework.*.mapper.*")
 @EnableDiscoveryClient

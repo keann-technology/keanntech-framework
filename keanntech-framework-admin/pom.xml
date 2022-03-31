@@ -53,14 +53,14 @@
                     <groupId>com.google.guava</groupId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>servo-core</artifactId>
-                    <groupId>com.netflix.servo</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>archaius-core</artifactId>
-                    <groupId>com.netflix.archaius</groupId>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
         <dependency>
             <groupId>com.github.xiaoymin</groupId>

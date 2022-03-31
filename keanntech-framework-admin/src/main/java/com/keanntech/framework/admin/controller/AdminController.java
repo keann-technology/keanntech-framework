@@ -25,12 +25,11 @@ public class AdminController {
     }
 
     @ApiOperation("根据用户名查找用户")
-    @GetMapping("/getByUserName")
-    public Admin getByUserName(@RequestParam("userName") String userName) {
+    @GetMapping("/getAdminByUserName")
+    public Admin getAdminByUserName(@RequestParam("userName") String userName) {
         try {
             return adminService.findByUserName(userName);
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }

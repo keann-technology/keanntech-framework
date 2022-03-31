@@ -20,6 +20,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Admin findByUserName(String name) {
-        return adminMapper.findByUserName(name);
+        Admin admin = adminMapper.findByUserName(name);
+        return admin;
     }
 }

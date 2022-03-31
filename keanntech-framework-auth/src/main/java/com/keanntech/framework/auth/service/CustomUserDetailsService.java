@@ -29,7 +29,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        Admin admin = adminFeignClient.findByUserNameV1(name);
+        Admin admin = adminFeignClient.findAdminByUserNameV1(name);
         if (admin == null) {
             throw new UsernameNotFoundException(String.format("No user found with username '%s'.", name));
         }

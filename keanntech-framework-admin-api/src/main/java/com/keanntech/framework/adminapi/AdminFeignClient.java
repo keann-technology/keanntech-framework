@@ -13,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "administrator-server")
 public interface AdminFeignClient {
 
-    @GetMapping("/api/admin/v1/getByUserName")
-    Admin findByUserNameV1(@RequestParam("name") String name);
+    /**
+     * 根据用户名查询管理员信息
+     * @param userName
+     * @return
+     */
+    @GetMapping("/api/admin/v1/getAdminByUserName")
+    Admin findAdminByUserNameV1(@RequestParam("userName") String userName);
 
 }

@@ -13,3 +13,7 @@ spring:
         shared-configs[0]:
           data-id: common-dev.yaml
           group: KEANN_COMMON
+      discovery:
+        server-addr: ${spring.cloud.nacos.server-addr}
+        namespace: ${spring.cloud.nacos.namespace}
+        # group: KEANN_GATEWAY

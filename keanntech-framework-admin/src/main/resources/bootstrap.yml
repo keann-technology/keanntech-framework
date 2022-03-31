@@ -18,4 +18,4 @@ spring:
       discovery:
         server-addr: ${spring.cloud.nacos.server-addr}
         namespace: ${spring.cloud.nacos.namespace}
-        group: KEANN_ADMIN
+        # group: KEANN_ADMIN

@@ -2,7 +2,7 @@ package com.keanntech.framework.auth.service;
 
 import com.keanntech.framework.adminapi.AdminFeignClient;
 import com.keanntech.framework.entity.domain.Admin;
-import com.keanntech.framework.security.domain.UserDetail;
+import com.keanntech.framework.common.domain.UserDetail;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

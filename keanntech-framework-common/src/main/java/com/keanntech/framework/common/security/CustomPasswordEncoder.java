@@ -1,4 +1,4 @@
-package com.keanntech.framework.security;
+package com.keanntech.framework.common.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

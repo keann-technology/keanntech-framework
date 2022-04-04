@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api("登录及刷新TOKEN")
-@RequestMapping("/api/auth/{version}")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     private final AuthService authService;

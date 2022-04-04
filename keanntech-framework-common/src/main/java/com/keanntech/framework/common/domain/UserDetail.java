@@ -1,4 +1,4 @@
-package com.keanntech.framework.security.domain;
+package com.keanntech.framework.common.domain;
 
 import lombok.Builder;
 import lombok.Data;

@@ -37,7 +37,6 @@
         <swagger.annotations.version>1.6.0</swagger.annotations.version>
         <knife4j.version>3.0.3</knife4j.version>
         <spring.security.jwt.version>1.1.1.RELEASE</spring.security.jwt.version>
-        <kf.security.version>1.0-SNAPSHOT</kf.security.version>
         <kf.common.version>1.0-SNAPSHOT</kf.common.version>
         <kf.datasource.version>1.0-SNAPSHOT</kf.datasource.version>
         <kf.entity.version>1.0-SNAPSHOT</kf.entity.version>
@@ -149,11 +148,6 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${common.lang3.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.keanntech.framework</groupId>
-                <artifactId>keanntech-framework-security</artifactId>
-                <version>${kf.security.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.keanntech.framework</groupId>

@@ -1,7 +1,7 @@
-package com.keanntech.framework.security.utils;
+package com.keanntech.framework.common.utils;
 
-import com.keanntech.framework.security.config.JwtConfig;
-import com.keanntech.framework.security.domain.UserDetail;
+import com.keanntech.framework.common.config.JwtConfig;
+import com.keanntech.framework.common.domain.UserDetail;
 import io.jsonwebtoken.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

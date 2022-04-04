@@ -1,4 +1,4 @@
-package com.keanntech.framework.security.jwt;
+package com.keanntech.framework.common.jwt;
 
 import com.keanntech.framework.common.web.ResultCode;
 import com.keanntech.framework.common.web.ResultJson;

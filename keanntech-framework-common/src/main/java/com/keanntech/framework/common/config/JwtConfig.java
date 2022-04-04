@@ -1,4 +1,4 @@
-package com.keanntech.framework.security.config;
+package com.keanntech.framework.common.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

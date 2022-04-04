@@ -20,20 +20,6 @@
     <dependencies>
         <dependency>
             <groupId>com.keanntech.framework</groupId>
-            <artifactId>keanntech-framework-security</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jsr305</artifactId>
-                    <groupId>com.google.code.findbugs</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.keanntech.framework</groupId>
-            <artifactId>keanntech-framework-entity</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.keanntech.framework</groupId>
             <artifactId>keanntech-framework-admin-api</artifactId>
             <exclusions>
                 <exclusion>

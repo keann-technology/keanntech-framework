@@ -1,8 +1,8 @@
-package com.keanntech.framework.security;
+package com.keanntech.framework.common.security;
 
+import com.keanntech.framework.common.domain.UserDetail;
+import com.keanntech.framework.common.utils.JwtUtils;
 import com.keanntech.framework.common.utils.ServletUtils;
-import com.keanntech.framework.security.domain.UserDetail;
-import com.keanntech.framework.security.utils.JwtUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;

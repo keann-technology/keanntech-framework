@@ -1,7 +1,7 @@
 package com.keanntech.framework.auth.config;
 
-import com.keanntech.framework.security.CustomPasswordEncoder;
-import com.keanntech.framework.security.config.WebSecurityConfig;
+import com.keanntech.framework.common.security.CustomPasswordEncoder;
+import com.keanntech.framework.common.security.WebSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

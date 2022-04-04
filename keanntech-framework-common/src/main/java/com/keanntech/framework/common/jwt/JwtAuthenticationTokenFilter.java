@@ -1,8 +1,8 @@
-package com.keanntech.framework.security.jwt;
+package com.keanntech.framework.common.jwt;
 
-import com.keanntech.framework.security.config.JwtConfig;
-import com.keanntech.framework.security.domain.UserDetail;
-import com.keanntech.framework.security.utils.JwtUtils;
+import com.keanntech.framework.common.config.JwtConfig;
+import com.keanntech.framework.common.domain.UserDetail;
+import com.keanntech.framework.common.utils.JwtUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

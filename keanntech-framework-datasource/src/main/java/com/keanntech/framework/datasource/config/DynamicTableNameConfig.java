@@ -14,10 +14,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DynamicTableNameConfig {
 
-    @Value("${keanntech.tenant.header}")
+    @Value("${tenant.header}")
     private String tenantHeader;
 
-    @Value("${keanntech.table-pre}")
+    @Value("${tenant.table-pre}")
     private String tablePre;
 
     @Bean

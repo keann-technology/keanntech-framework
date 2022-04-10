@@ -38,6 +38,11 @@ public class JwtUtils {
         this.jwtConfig = jwtConfig;
     }
 
+    /**
+     * 通过TOKEN获取用户信息
+     * @param token
+     * @return
+     */
     public UserDetail getUserDetailFromToken(String token) {
         final Claims claims = getClaimsFromToken(token);
         if (claims == null) {
@@ -185,6 +190,7 @@ public class JwtUtils {
         claims.put(CLAIM_KEY_TENANT_CODE, userDetail.getTenantCode());
         claims.put(CLAIM_KEY_ADMIN_TYPE, userDetail.getAdminType());
         return Jwts.builder()
+                .setIssuer(jwtConfig.getIssuer())
                 .setClaims(claims)
                 .setSubject(username)
                 .setId(userId)

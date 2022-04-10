@@ -1,6 +1,6 @@
 package com.keanntech.framework.common.security;
 
-import com.keanntech.framework.common.config.ApiPathWhiteConfig;
+import com.keanntech.framework.common.config.JwtConfig;
 import com.keanntech.framework.common.jwt.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationTokenFilter authenticationTokenFilter;
 
     @Autowired
-    private ApiPathWhiteConfig apiPathWhiteConfig;
+    private JwtConfig jwtConfig;
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers(apiPathWhiteConfig.getApiPathWhiteConfig().toArray(new String[apiPathWhiteConfig.getApiPathWhiteConfig().size()])).anonymous()
+                .antMatchers(jwtConfig.getApiPathWhiteConfig().toArray(new String[jwtConfig.getApiPathWhiteConfig().size()])).anonymous()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers(apiPathWhiteConfig.getApiPathWhiteConfig().toArray(new String[apiPathWhiteConfig.getApiPathWhiteConfig().size()]));
+        web.ignoring().antMatchers(jwtConfig.getApiPathWhiteConfig().toArray(new String[jwtConfig.getApiPathWhiteConfig().size()]));
     }
 
 }

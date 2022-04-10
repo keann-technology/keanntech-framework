@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 /**
  * @author miaoqingfu
  * @date 2022年03月04日 2:09 PM
@@ -18,5 +20,7 @@ public class JwtConfig {
     private Long accessTokenExpiration;
     private Long refreshTokenExpiration;
     private String tokenHead;
+    private String issuer;
+    private List<String> apiPathWhiteConfig;
 
 }

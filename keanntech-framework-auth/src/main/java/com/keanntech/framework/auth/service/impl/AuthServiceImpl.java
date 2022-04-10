@@ -7,6 +7,7 @@ import com.keanntech.framework.common.web.ResultJson;
 import com.keanntech.framework.entity.domain.vo.AdminUserVo;
 import com.keanntech.framework.common.domain.UserDetail;
 import com.keanntech.framework.common.utils.JwtUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -16,6 +17,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -55,6 +57,23 @@ public class AuthServiceImpl implements AuthService {
                 .refreshToken(refreshToken)
                 .authorities(grantedAuthorities)
                 .build();
+
+    }
+
+    @Override
+    public AdminUserVo refreshToken(String refreshToken) {
+        if (StringUtils.isEmpty(refreshToken)) {
+            return null;
+        }
+        UserDetail userDetail = jwtTokenUtil.getUserDetailFromToken(refreshToken);
+        Assert.notNull(userDetail, "刷新token失败！");
+
+        Set<GrantedAuthority> grantedAuthorities = userDetail.getAuthorities().stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toSet());
+
+        return AdminUserVo.builder()
+                .token(jwtTokenUtil.refreshToken(refreshToken))
+                .refreshToken(jwtTokenUtil.generateRefreshToken(userDetail))
+                .authorities(grantedAuthorities).build();
 
     }
 

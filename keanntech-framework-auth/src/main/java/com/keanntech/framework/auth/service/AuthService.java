@@ -17,6 +17,8 @@ public interface AuthService {
      */
     AdminUserVo login(String username, String password);
 
+    AdminUserVo refreshToken(String refreshToken);
+
     /**
      * 退出
      */

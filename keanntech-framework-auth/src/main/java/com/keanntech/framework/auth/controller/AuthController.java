@@ -8,10 +8,7 @@ import com.keanntech.framework.entity.domain.dto.RegAdminDto;
 import com.keanntech.framework.entity.domain.vo.AdminUserVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author miaoqingfu
@@ -44,6 +41,16 @@ public class AuthController {
     public ResultJson register(@RequestBody RegAdminDto admin) {
         try{
             return ResultJson.ok();
+        } catch (Exception e) {
+            return ResultJson.failure(ResultCode.SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/refreshToken")
+    @ApiOperation("用刷新token换取token")
+    public ResultJson<AdminUserVo> refreshToken(@RequestParam("refreshToken") String refreshToken) {
+        try {
+            return ResultJson.ok(authService.refreshToken(refreshToken));
         } catch (Exception e) {
             return ResultJson.failure(ResultCode.SERVER_ERROR);
         }

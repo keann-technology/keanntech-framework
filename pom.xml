@@ -116,7 +116,7 @@
                     <include>**/*.xml</include>
                     <include>**/*.yml</include>
                     <include>**/*.properties</include>
-                    <include>**/*.tar.gz</include>
+<!--                    <include>**/*.tar.gz</include>-->
                 </includes>
                 <filtering>true</filtering>
             </resource>

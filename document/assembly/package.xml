@@ -1,32 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<assembly>
-    <id>full</id>
-
+<assembly
+        xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/2.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>make-assembly</id>
     <formats>
-        <format>jar</format>
+        <format>zip</format>
+        <format>tar.gz</format>
     </formats>
     <includeBaseDirectory>false</includeBaseDirectory>
-    <dependencySets>
-        <dependencySet>
-            <!--不使用项目的artifact，第三方jar不要解压，打包进lib目录-->
-            <useProjectArtifact>false</useProjectArtifact>
-
-            <!-- 第三方jar打包进Zip文件的lib目录下， -->
-            <!-- 注意此目录要与maven-jar-plugin中classpathPrefix指定的目录相同, -->
-            <!-- 不然这些依赖的jar包加载到ClassPath的时候会找不到-->
-            <outputDirectory>lib</outputDirectory>
-
-            <!-- 第三方jar不要解压-->
-            <!--<unpack>false</unpack>-->
-        </dependencySet>
-    </dependencySets>
     <fileSets>
         <fileSet>
-            <directory>target/classes</directory>
+            <directory>${project.parent.basedir}</directory>
             <outputDirectory>/</outputDirectory>
-            <excludes>
-                <exclude>*.tar.gz</exclude>
-            </excludes>
+            <filtered>true</filtered>
+            <includes>
+                <include>72crm.sh</include>
+            </includes>
+            <fileMode>755</fileMode>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+        <fileSet>
+            <directory>${project.parent.basedir}</directory>
+            <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
+            <includes>
+                <include>72crm.bat</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/config/</directory>
+            <outputDirectory>config</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/public/</directory>
+            <outputDirectory>public</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/lib/</directory>
+            <outputDirectory>lib</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/</directory>
+            <includes>
+                <!--<include>${pom.artifactId}-${pom.version}.jar</include>-->
+                <include>*.jar</include>
+            </includes>
+            <outputDirectory>/</outputDirectory>
         </fileSet>
     </fileSets>
 </assembly>
